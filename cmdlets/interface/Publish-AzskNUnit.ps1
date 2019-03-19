@@ -13,7 +13,7 @@ $ArmResults = @(Get-ARMCheckerResultList -Path $tmp)
 $TestCases = ConvertTo-TestCases -ArmResults $ArmResults
 
 $azskTest = Get-ModulePath -Folder 'cmdlets/interface' -Filename 'Azsk.tests.ps1'
-$OutputFile = Get-ModulePath -Filename 'Output.nunit'
+$OutputFile = Get-ModulePath -Filename 'azsk.nunit.xml'
 
 $Scripts += (@{Path=$azskTest; parameters=@{TestCases=$TestCases}})
 
