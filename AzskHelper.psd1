@@ -21,13 +21,13 @@ ModuleVersion = '0.0.1'
 GUID = '833ffe23-cfb7-4340-bb11-0173bc4eedf7'
 
 # Author of this module
-Author = 'Standard'
+Author = 'ALM Mechanics'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+CompanyName = 'ALM Mechanics'
 
 # Copyright statement for this module
-Copyright = '(c) Standard. All rights reserved.'
+Copyright = '(c)2019 ALM Mechanics. All rights reserved.'
 
 # Description of the functionality provided by this module
 # Description = ''
@@ -69,7 +69,7 @@ Copyright = '(c) Standard. All rights reserved.'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = @('Publish-AzskNUnit')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = '*'
