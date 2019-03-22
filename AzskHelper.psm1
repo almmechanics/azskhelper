@@ -11,3 +11,4 @@ $internalPath = Join-Path $cmdletsPath 'internal'
 . (Join-Path $internalPath 'Get-SkippedFilesLog.ps1')
 . (Join-Path $internalPath 'Get-ModulePath.ps1')
 
+Write-Host 'azskhelper module loaded'
