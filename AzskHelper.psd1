@@ -27,7 +27,7 @@ Author = 'ALM Mechanics'
 CompanyName = 'ALM Mechanics'
 
 # Copyright statement for this module
-Copyright = '(c)2019 ALM Mechanics. All rights reserved.'
+Copyright = '(c)2019 ALM Mechanics Ltd. All rights reserved.'
 
 # Description of the functionality provided by this module
 # Description = ''

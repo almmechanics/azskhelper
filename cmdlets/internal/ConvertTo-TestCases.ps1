@@ -1,8 +1,11 @@
 
+Set-StrictMode -Version latest
 function ConvertTo-TestCases
 {
+    [CmdletBinding()] 
     param(
-        [array]
+        [Array]
+        [ValidateNotNullOrEmpty()]
         $ArmResults
     )
 
@@ -16,5 +19,5 @@ function ConvertTo-TestCases
         Status = $_.Status
         }
     }
-    return $TestCases
+    return @($TestCases)
 }

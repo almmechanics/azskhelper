@@ -1,13 +1,20 @@
+Set-StrictMode -Version latest
+
 function Get-ModulePath
 {
+    
     param(
-    [string]
-    $Folder ='.',
-    [string]
-    $Filename)
+        [Parameter(Mandatory=$true)]
+        [string]
+        [ValidateNotNullOrEmpty()]
+        $Filename,
+        [string]
+        [ValidateNotNullOrEmpty()]
+        $Folder ='.'
+    )
 
-    $root = (Get-Module 'AzskHelper').ModuleBase
+    $moduleBase = (Get-Module 'AzskHelper').ModuleBase
 
-    return Join-Path $root (Join-Path $Folder $Filename)
+    return Join-Path $moduleBase (Join-Path $Folder $Filename)
 }
 

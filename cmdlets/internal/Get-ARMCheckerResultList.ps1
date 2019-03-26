@@ -1,7 +1,13 @@
+Set-StrictMode -Version latest
+
 function Get-ARMCheckerResultList
 {
+    [CmdletBinding()] 
     param(
+        [Parameter(Mandatory=$true)]
         [string]
+        [ValidateScript({Test-Path $_})]
+        [ValidateNotNullOrEmpty()]
         $Path
     )
 
