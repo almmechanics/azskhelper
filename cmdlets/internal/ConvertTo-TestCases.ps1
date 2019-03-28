@@ -4,6 +4,7 @@ function ConvertTo-TestCases
 {
     [CmdletBinding()] 
     param(
+        [parameter(ValueFromPipelineByPropertyName,ValueFromPipeline)]
         [Array]
         [ValidateNotNullOrEmpty()]
         $ArmResults
