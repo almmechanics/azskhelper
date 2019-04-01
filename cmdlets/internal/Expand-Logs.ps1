@@ -19,4 +19,6 @@ function Expand-Logs  {
     Expand-Archive -Path $ArmTemplateCheckerLog -DestinationPath $ExpandedPath -Verbose
 
     Write-Verbose ('Expanded "{0} into "{1}" folder' -f $ArmTemplateCheckerLog, $ExpandedPath)
+    
+    return $ExpandedPath
 }   
