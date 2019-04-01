@@ -6,6 +6,7 @@ $interfacePath = Join-Path $cmdletsPath 'interface'
 . (Join-Path $interfacePath 'Publish-AzskNUnit.ps1')
 
 $internalPath = Join-Path $cmdletsPath 'internal'
+. (Join-Path $internalPath 'ConvertTo-NUnit.ps1')
 . (Join-Path $internalPath 'ConvertTo-TestCases.ps1')
 . (Join-Path $internalPath 'Expand-Logs.ps1')
 . (Join-Path $internalPath 'Get-ARMCheckerResultList.ps1')
