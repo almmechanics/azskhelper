@@ -20,7 +20,7 @@ function Publish-AzskNUnit
         $TestCases = @((Get-ARMCheckerResultList -Path $ExpandedAzskLogs) | ConvertTo-TestCases)
 
         # Invoke pester to validate convert from AZSK to NUnit
-        ConvertTo-Nunit -TestCases $TestCases -OutputPath ($Path | Split-Path) -EnableExit:$EnableExit  
+        ConvertTo-Nunit -TestCases $TestCases -OutputPath $Path -EnableExit:$EnableExit  
     }
     catch
     {
