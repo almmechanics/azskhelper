@@ -30,12 +30,12 @@ Describe 'Get-ModulePath tests' {
 
         Mock Get-Module {return @{ModuleBase = $testfolder} } -Verifiable
 
-        It 'Default folder name is processed on mac' {
+        It 'Default folder name is processed' {
             Get-ModulePath -Filename 'Valid.filename' | should be 'TestDrive:/ModuleBase/./Valid.filename'
             Assert-MockCalled Get-Module -Exactly 1 -Scope It
         }
 
-        It 'custom folder name is processed on mac' {
+        It 'custom folder name is processed' {
             Get-ModulePath -Folder 'custom' -Filename 'Valid.filename' | should be 'TestDrive:/ModuleBase/custom/Valid.filename'
             Assert-MockCalled Get-Module -Exactly 1 -Scope It
         }

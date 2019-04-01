@@ -7,14 +7,12 @@ function Expand-Logs  {
         [string]
         [ValidateScript({Test-Path $_})]
         [ValidateNotNullOrEmpty()]
-        $ArchivePath
+        $Path
     )
     
     $ExpandedPath= join-path ((New-TemporaryFile).DirectoryName) (get-date -Format 'a\z\sk-yyyyMMddHHmmss')
     New-Item $ExpandedPath -ItemType Directory -Force | out-null
-    Expand-Archive -Path $ArchivePath -DestinationPath $ExpandedPath -Verbose
+    Expand-Archive -Path $Path -DestinationPath $ExpandedPath -Verbose
 
-    Write-Verbose ('Expanded "{0} into "{1}" folder' -f $ArchivePath, $ExpandedPath)
-
-    return $ExpandedPath
+    Write-Verbose ('Expanded "{0} into "{1}" folder' -f $Path, $ExpandedPath)
 }   
