@@ -11,6 +11,6 @@ $internalPath = Join-Path $cmdletsPath 'internal'
 . (Join-Path $internalPath 'Get-ARMCheckerResultList.ps1')
 . (Join-Path $internalPath 'Get-SkippedFilesList.ps1')
 . (Join-Path $internalPath 'Get-ModulePath.ps1')
-. (Join-Path $internalPath 'ArmTemplateCheckerLog.ps1')
+. (Join-Path $internalPath 'Search-AzskLogs.ps1')
 
 Write-Verbose 'azskhelper module loaded'
