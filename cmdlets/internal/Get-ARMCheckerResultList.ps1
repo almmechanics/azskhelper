@@ -11,7 +11,7 @@ function Get-ARMCheckerResultList
         $Path
     )
 
-    $candidateFiles = @( Get-ChildItem -Path $Path -Recurse -filter 'ARMCheckerResults_*.csv')
+    $candidateFiles = @( Get-ChildItem -Path $Path -filter '*ARMCheckerResults*.csv' -recurse)
     if ($candidateFiles.count -gt 0)
     {
         if ($candidateFiles.count -gt 1)

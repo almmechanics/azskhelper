@@ -17,7 +17,7 @@ function Publish-AzskNUnit
         $ExpandedAzskLogs = Expand-Logs -Path $Path
 
         # Generate parameters for the test run
-        $TestCases = @((Get-ARMCheckerResultList -Path $ExpandedAzskLogs) | ConvertTo-TestCases)
+        $TestCases = @(ConvertTo-TestCases -ArmResults @(Get-ARMCheckerResultList -Path $ExpandedAzskLogs))
 
         # Invoke pester to validate convert from AZSK to NUnit
         ConvertTo-Nunit -TestCases $TestCases -OutputPath $Path -EnableExit:$EnableExit  
