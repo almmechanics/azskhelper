@@ -16,7 +16,7 @@ function ConvertTo-NUnit
         $EnableExit
     )
 
-    $OutputFile = Join-Path $OutputPath 'azsk.nunit.xml'
+    $OutputFile = Join-Path $OutputPath 'TEST-azsk.nunit.xml'
     Write-host ("##vso[task.setvariable variable=NUnit.OutputPath]" -f $OutputFile)
 
     $TestsToRun = Get-ModulePath -Folder 'azsktests' -Filename 'Azsk.tests.ps1'
