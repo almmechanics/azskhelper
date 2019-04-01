@@ -10,9 +10,13 @@ function Expand-Logs  {
         $Path
     )
     
+    # Find Singular AZSK archive
+    $ArmTemplateCheckerLog = Search-AzskLogs -Path $Path
+ 
     $ExpandedPath= join-path ((New-TemporaryFile).DirectoryName) (get-date -Format 'a\z\sk-yyyyMMddHHmmss')
     New-Item $ExpandedPath -ItemType Directory -Force | out-null
-    Expand-Archive -Path $Path -DestinationPath $ExpandedPath -Verbose
 
-    Write-Verbose ('Expanded "{0} into "{1}" folder' -f $Path, $ExpandedPath)
+    Expand-Archive -Path $ArmTemplateCheckerLog -DestinationPath $ExpandedPath -Verbose
+
+    Write-Verbose ('Expanded "{0} into "{1}" folder' -f $ArmTemplateCheckerLog, $ExpandedPath)
 }   
