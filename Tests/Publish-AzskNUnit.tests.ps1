@@ -52,8 +52,8 @@ Describe 'Publish-AzskNUnit tests' {
         }    
 
         It 'Passes testcases to Pester' {
-            $ArmResults = @(@{FeatureName = 'ValidFeatureName1';Description='ValidDescription1';LineNumber='ValidLineNumber1';FilePath='ValidFilePath1';Status='ValidStatus1'},
-                            @{FeatureName = 'ValidFeatureName2';Description='ValidDescription2';LineNumber='ValidLineNumber2';FilePath='ValidFilePath2';Status='ValidStatus2'})
+            $ArmResults = @(@{FeatureName = 'ValidFeatureName1';Description='ValidDescription1';ResourceLineNumber='ValidLineNumber1';FilePath='ValidFilePath1';Status='ValidStatus1'},
+                            @{FeatureName = 'ValidFeatureName2';Description='ValidDescription2';ResourceLineNumber='ValidLineNumber2';FilePath='ValidFilePath2';Status='ValidStatus2'})
 
             Mock Expand-Logs {return 'TestDrive:/'} -Verifiable
             Mock Write-Error{} -Verifiable 

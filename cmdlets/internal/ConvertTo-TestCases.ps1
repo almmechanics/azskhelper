@@ -16,7 +16,7 @@ function ConvertTo-TestCases
             @{
                 FeatureName = $_.FeatureName
                 Description = $_.Description
-                LineNumber = $_.LineNumber
+                ResourceLineNumber = $_.ResourceLineNumber
                 FilePath = $_.FilePath
                 Status = $_.Status
             }
