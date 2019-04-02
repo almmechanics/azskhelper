@@ -25,6 +25,14 @@ Describe 'ConvertTo-TestCases tests' {
         It 'TestCases array cannot be an empty' {
             {ConvertTo-NUnit -OutputPath 'TestDrive:' -TestCases @()} | should throw
         }
+
+        It 'OutputVariable parameter cannot be null' {
+            {ConvertTo-NUnit -OutputPath 'TestDrive:' -TestCases @('valid') -OutputVariable $null} | should throw
+        }
+
+        It 'OutputVariable parameter cannot be empty' {
+            {ConvertTo-NUnit -OutputPath 'TestDrive:' -TestCases @('valid') -OutputVariable ([string]::empty)} | should throw
+        }
     }
 
     Context 'Usage' {
@@ -37,10 +45,10 @@ Describe 'ConvertTo-TestCases tests' {
 
             New-Item -ItemType Directory -path 'TestDrive:/source'
 
-            {ConvertTo-NUnit -OutputPath 'TestDrive:/' -TestCases @('testcase')} | should not throw
+            {ConvertTo-NUnit -OutputPath 'TestDrive:/' -TestCases @('testcase') -OutputVariable 'valid' } | should not throw
 
             Assert-MockCalled Join-Path -Times 1 -Scope It
-            Assert-MockCalled Write-host -Times 1 -Scope It
+            Assert-MockCalled Write-Host -Times 1 -Scope It
             Assert-MockCalled Get-ModulePath -Times 1 -Scope It
             Assert-MockCalled Invoke-Pester -Times 1 -Scope It
         }
@@ -53,7 +61,7 @@ Describe 'ConvertTo-TestCases tests' {
 
             New-Item -ItemType Directory -path 'TestDrive:/source2'
 
-            {ConvertTo-NUnit -OutputPath 'TestDrive:/' -TestCases @('testcase2') -EnableExit } | should not throw
+            {ConvertTo-NUnit -OutputPath 'TestDrive:/' -TestCases @('testcase2') -EnableExit -OutputVariable 'valid' } | should not throw
 
             Assert-MockCalled Join-Path -Times 1 -Scope It
             Assert-MockCalled Write-host -Times 1 -Scope It

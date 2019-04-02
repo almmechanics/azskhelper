@@ -8,6 +8,9 @@ function Publish-AzskNUnit
         [ValidateScript({Test-Path $_})]
         [ValidateNotNullOrEmpty()]
         $Path,
+        [string]
+        [ValidateNotNullOrEmpty()]
+        $OutputVariable = 'AZSK.NUnit.OutputPath',
         [switch]
         $EnableExit
     )
@@ -20,7 +23,7 @@ function Publish-AzskNUnit
         $TestCases = @(ConvertTo-TestCases -ArmResults @(Get-ARMCheckerResultList -Path $ExpandedAzskLogs))
 
         # Invoke pester to validate convert from AZSK to NUnit
-        ConvertTo-Nunit -TestCases $TestCases -OutputPath $Path -EnableExit:$EnableExit  
+        ConvertTo-Nunit -TestCases $TestCases -OutputPath $Path -EnableExit:$EnableExit -OutputVariable $OutputVariable
     }
     catch
     {

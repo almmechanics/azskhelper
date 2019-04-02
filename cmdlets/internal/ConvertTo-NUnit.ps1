@@ -1,4 +1,3 @@
-
 Set-StrictMode -Version latest
 function ConvertTo-NUnit
 {
@@ -9,6 +8,10 @@ function ConvertTo-NUnit
         [ValidateScript({Test-Path $_})]
         $OutputPath,
         [Parameter(Mandatory=$true)]
+        [string]
+        [ValidateNotNullOrEmpty()]
+        $OutputVariable,
+        [Parameter(Mandatory=$true)]
         [array]
         [ValidateNotNullOrEmpty()]
         $TestCases,
@@ -17,7 +20,7 @@ function ConvertTo-NUnit
     )
 
     $OutputFile = Join-Path $OutputPath 'TEST-azsk.nunit.xml'
-    Write-host ("##vso[task.setvariable variable=AZSK.NUnit.OutputPath]" -f $OutputFile)
+    Write-Host ("##vso[task.setvariable variable={0}]{1}" -f $OutputVariable, $OutputFile)
 
     $TestsToRun = Get-ModulePath -Folder 'azsktests' -Filename 'Azsk.tests.ps1'
 

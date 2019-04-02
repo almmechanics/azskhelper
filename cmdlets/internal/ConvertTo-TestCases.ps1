@@ -1,4 +1,3 @@
-
 Set-StrictMode -Version latest
 function ConvertTo-TestCases
 {
