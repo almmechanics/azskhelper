@@ -12,7 +12,7 @@
 RootModule = 'AzskHelper.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.2.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,7 +30,7 @@ CompanyName = 'ALM Mechanics'
 Copyright = '(c)2019 ALM Mechanics Ltd. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Converts AZSK to NUNIT output'
+Description = 'Convert AzSK to NUnit output'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -120,4 +120,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
