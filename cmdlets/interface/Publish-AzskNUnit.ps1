@@ -27,11 +27,13 @@ function Publish-AzskNUnit
 
         if ($summary.FailedCount -gt 0)
         {
-            Write-Warning 'Not all AzSK tests completed successfully'
-
             if($EnableExit)
             {
-                $host.SetShouldExit($summary.FailedCount)
+                Write-Error 'Not all AzSK tests completed successfully'
+            }
+            else 
+            {
+                Write-Warning 'Not all AzSK tests completed successfully'
             }
         }
     }
