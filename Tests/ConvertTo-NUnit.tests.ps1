@@ -3,7 +3,6 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests', ''
 . "$here\..\cmdlets\internal\$sut"
 . "$here\..\cmdlets\internal\Get-ModulePath.ps1"
 
-
 Describe 'ConvertTo-TestCases tests' {
     Context 'Interface Tests' {
         It 'OutputPath parameter cannot be null' {
@@ -52,22 +51,5 @@ Describe 'ConvertTo-TestCases tests' {
             Assert-MockCalled Get-ModulePath -Times 1 -Scope It
             Assert-MockCalled Invoke-Pester -Times 1 -Scope It
         }
-
-        It 'Can Invoke Pester directly to Exit on failure' {
-            Mock Join-Path{return 'valid_path'} -Verifiable
-            Mock Write-host{} -Verifiable
-            Mock Get-ModulePath{} -Verifiable
-            Mock Invoke-Pester{} -Verifiable
-
-            New-Item -ItemType Directory -path 'TestDrive:/source2'
-
-            {ConvertTo-NUnit -OutputPath 'TestDrive:/' -TestCases @('testcase2') -EnableExit -OutputVariable 'valid' } | should not throw
-
-            Assert-MockCalled Join-Path -Times 1 -Scope It
-            Assert-MockCalled Write-host -Times 1 -Scope It
-            Assert-MockCalled Get-ModulePath -Times 1 -Scope It
-            Assert-MockCalled Invoke-Pester -Times 1 -Scope It
-        }
     }
-
 }

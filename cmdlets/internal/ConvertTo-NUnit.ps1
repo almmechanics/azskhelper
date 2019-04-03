@@ -14,9 +14,7 @@ function ConvertTo-NUnit
         [Parameter(Mandatory=$true)]
         [array]
         [ValidateNotNullOrEmpty()]
-        $TestCases,
-        [switch]
-        $EnableExit
+        $TestCases
     )
 
     $OutputFile = Join-Path $OutputPath 'TEST-azsk.nunit.xml'
@@ -24,5 +22,5 @@ function ConvertTo-NUnit
 
     $TestsToRun = Get-ModulePath -Folder 'azsktests' -Filename 'Azsk.tests.ps1'
 
-    Invoke-Pester -Script (@{Path=$TestsToRun; parameters=@{TestCases=$TestCases}}) -OutputFile $OutputFile -OutputFormat NUnitXml -EnableExit:$EnableExit    
+    return (Invoke-Pester -Script (@{Path=$TestsToRun; parameters=@{TestCases=$TestCases}}) -OutputFile $OutputFile -OutputFormat NUnitXml -PassThru)
 }

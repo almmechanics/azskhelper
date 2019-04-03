@@ -23,7 +23,17 @@ function Publish-AzskNUnit
         $TestCases = @(ConvertTo-TestCases -ArmResults @(Get-ARMCheckerResultList -Path $ExpandedAzskLogs))
 
         # Invoke pester to validate convert from AZSK to NUnit
-        ConvertTo-Nunit -TestCases $TestCases -OutputPath $Path -EnableExit:$EnableExit -OutputVariable $OutputVariable
+        $summary = ConvertTo-Nunit -TestCases $TestCases -OutputPath $Path -OutputVariable $OutputVariable
+
+        if ($summary.FailedCount -gt 0)
+        {
+            Write-Warning 'Not all AzSK tests completed successfully'
+
+            if($EnableExit)
+            {
+                $host.SetShouldExit($summary.FailedCount)
+            }
+        }
     }
     catch
     {
