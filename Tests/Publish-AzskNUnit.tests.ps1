@@ -58,7 +58,7 @@ Describe 'Publish-AzskNUnit tests' {
             Mock Expand-Logs {return 'TestDrive:/'} -Verifiable
             Mock Write-Error{} -Verifiable 
             Mock Get-ARMCheckerResultList{return $ArmResults} -Verifiable
-            Mock ConvertTo-NUnit{return @('valid')} -Verifiable
+            Mock ConvertTo-NUnit{return @{'FailedCount'='0'}} -Verifiable
             Mock ConvertTo-TestCases{return @('testcase')} -Verifiable
 
             {Publish-AzskNUnit -Path 'TestDrive:/Archive'} | should not throw
