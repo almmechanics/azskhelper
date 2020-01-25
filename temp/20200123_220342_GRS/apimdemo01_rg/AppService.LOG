@@ -1,0 +1,209 @@
+================================================================================
+Starting analysis: [FeatureName: AppService] [ResourceGroupName: apimdemo01_rg] [ResourceName: core-infra-dev] 
+--------------------------------------------------------------------------------
+================================================================================
+[Azure_AppService_AuthZ_Grant_Min_RBAC_Access]: All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)
+--------------------------------------------------------------------------------
+01/23/2020 22:04:00-Checking: [AppService]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)] for resource [core-infra-dev]
+No identities have been explicitly provided with RBAC access to resource - [core-infra-dev]
+Note: 4 identities (ServicePrincipal: 3, User: 1) have inherited RBAC access to resource. It's good practice to keep the RBAC access to minimum.
+--------------------------------------------------------------------------------
+**Verify**: [AppService]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_DP_Use_CNAME_With_SSL]: Custom domain with SSL binding must be configured for App Service
+--------------------------------------------------------------------------------
+01/23/2020 22:04:01-Checking: [AppService]-[Custom domain with SSL binding must be configured for App Service] for resource [core-infra-dev]
+Custom domains are not configured for resource core-infra-dev
+@(
+    "core-infra-dev.azurewebsites.net"
+)
+--------------------------------------------------------------------------------
+**Failed**: [AppService]-[Custom domain with SSL binding must be configured for App Service] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_AuthN_Use_AAD_for_Client_AuthN]: App Service must authenticate users using Azure Active Directory backed credentials
+--------------------------------------------------------------------------------
+01/23/2020 22:04:01-Checking: [AppService]-[App Service must authenticate users using Azure Active Directory backed credentials] for resource [core-infra-dev]
+AAD Authentication for resource core-infra-dev is not required.
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[App Service must authenticate users using Azure Active Directory backed credentials] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_Config_Disable_Remote_Debugging]: Remote debugging must be turned off for App Service
+--------------------------------------------------------------------------------
+01/23/2020 22:04:06-Checking: [AppService]-[Remote debugging must be turned off for App Service] for resource [core-infra-dev]
+Remote debugging for resource core-infra-dev is turned off
+@{
+    "RemoteDebuggingEnabled" = $False
+}
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[Remote debugging must be turned off for App Service] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_Config_Disable_Web_Sockets]: Web Sockets should be disabled for App Service
+--------------------------------------------------------------------------------
+01/23/2020 22:04:06-Checking: [AppService]-[Web Sockets should be disabled for App Service] for resource [core-infra-dev]
+Web sockets for resource core-infra-dev is not enabled
+@{
+    "WebSocketsEnabled" = $False
+}
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[Web Sockets should be disabled for App Service] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_Deploy_Use_Latest_Version]: The latest version of .NET framework version should be used for App Service
+--------------------------------------------------------------------------------
+01/23/2020 22:04:06-Checking: [AppService]-[The latest version of .NET framework version should be used for App Service] for resource [core-infra-dev]
+Latest .Net Framework version is used for resource core-infra-dev
+@{
+    "NetFrameworkVersion" = "v4.0"
+}
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[The latest version of .NET framework version should be used for App Service] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_Audit_Enable_Logging_and_Monitoring]: Auditing and Monitoring must be enabled for App Service
+--------------------------------------------------------------------------------
+01/23/2020 22:04:07-Checking: [AppService]-[Auditing and Monitoring must be enabled for App Service] for resource [core-infra-dev]
+All configurations of diagnostics logs for resource core-infra-dev are not enabled
+@{
+    "DetailedErrorLoggingEnabled" = $False; 
+    "HttpLoggingEnabled" = $False; 
+    "RequestTracingEnabled" = $False
+}
+--------------------------------------------------------------------------------
+**Failed**: [AppService]-[Auditing and Monitoring must be enabled for App Service] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_DP_Dont_Allow_HTTP_Access]: App Service must only be accessible over HTTPS
+--------------------------------------------------------------------------------
+01/23/2020 22:04:07-Checking: [AppService]-[App Service must only be accessible over HTTPS] for resource [core-infra-dev]
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[App Service must only be accessible over HTTPS] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_DP_Website_Load_Certificates_Not_All]: WEBSITE_LOAD_CERTIFICATES parameter must not be set to '*' (i.e. all) for App Service
+--------------------------------------------------------------------------------
+01/23/2020 22:04:07-Checking: [AppService]-[WEBSITE_LOAD_CERTIFICATES parameter must not be set to '*' (i.e. all) for App Service] for resource [core-infra-dev]
+'WEBSITE_LOAD_CERTIFICATES' parameter defined equal to '*' is not found in App Settings for resource core-infra-dev
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[WEBSITE_LOAD_CERTIFICATES parameter must not be set to '*' (i.e. all) for App Service] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_Authz_Use_Function_Authorization_level_Fn]: Authorization level for HTTP Trigger function in a function app should be set to 'Function'
+--------------------------------------------------------------------------------
+01/23/2020 22:04:07-Checking: [AppService]-[Authorization level for HTTP Trigger function in a function app should be set to 'Function'] for resource [core-infra-dev]
+No functions are found in Functions app resource  core-infra-dev
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[Authorization level for HTTP Trigger function in a function app should be set to 'Function'] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_Configure_EditMode_ReadOnly_Fn]: Functions app edit mode should be set to Read Only
+--------------------------------------------------------------------------------
+01/23/2020 22:04:09-Checking: [AppService]-[Functions app edit mode should be set to Read Only] for resource [core-infra-dev]
+Verify that Functions app edit mode should be defined as 'readonly' for resource core-infra-dev
+--------------------------------------------------------------------------------
+**Verify**: [AppService]-[Functions app edit mode should be set to Read Only] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_DP_Restrict_CORS_Access]: Ensure that CORS access is granted to a limited set of trusted origins.
+--------------------------------------------------------------------------------
+01/23/2020 22:04:09-Checking: [AppService]-[Ensure that CORS access is granted to a limited set of trusted origins.] for resource [core-infra-dev]
+CORS is enabled in app service with access from custom domains 
+@(
+    "https://functions.azure.com", 
+    "https://functions-staging.azure.com", 
+    "https://functions-next.azure.com"
+)
+--------------------------------------------------------------------------------
+**Verify**: [AppService]-[Ensure that CORS access is granted to a limited set of trusted origins.] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_AuthN_Use_Managed_Service_Identity]: Use Managed Service Identity (MSI) for accessing other AAD-protected resources from the app service.
+--------------------------------------------------------------------------------
+01/23/2020 22:04:09-Checking: [AppService]-[Use Managed Service Identity (MSI) for accessing other AAD-protected resources from the app service.] for resource [core-infra-dev]
+Your app service is using Managed Service Identity (MSI). It is specifically turned on. Make sure this MSI identity is used to access the resources.
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[Use Managed Service Identity (MSI) for accessing other AAD-protected resources from the app service.] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_DP_Dont_Allow_HTTP_Access_Fn]: Function App must only be accessible over HTTPS
+--------------------------------------------------------------------------------
+01/23/2020 22:04:11-Checking: [AppService]-[Function App must only be accessible over HTTPS] for resource [core-infra-dev]
+Enabling 'HttpsOnly' is not required for this resource core-infra-dev.
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[Function App must only be accessible over HTTPS] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_DP_Use_Secure_TLS_Version]: Use approved version of TLS for the App Service
+--------------------------------------------------------------------------------
+01/23/2020 22:04:11-Checking: [AppService]-[Use approved version of TLS for the App Service] for resource [core-infra-dev]
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[Use approved version of TLS for the App Service] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_DP_Verify_Installed_Extensions]: Extensions installed on a App Service should be carefully reviewed
+--------------------------------------------------------------------------------
+01/23/2020 22:04:12-Checking: [AppService]-[Extensions installed on a App Service should be carefully reviewed] for resource [core-infra-dev]
+No extension is installed on resource core-infra-dev
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[Extensions installed on a App Service should be carefully reviewed] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_AuthZ_Configure_IP_Restrictions]: Setup IP-based access restrictions for App Service if feasible
+--------------------------------------------------------------------------------
+01/23/2020 22:04:13-Checking: [AppService]-[Setup IP-based access restrictions for App Service if feasible] for resource [core-infra-dev]
+IP rule based access restriction is not set up for app: core-infra-dev
+IP based access restriction is not set up for scm site used by app.
+--------------------------------------------------------------------------------
+**Verify**: [AppService]-[Setup IP-based access restrictions for App Service if feasible] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+================================================================================
+[Azure_AppService_DP_Review_CORS_Request_Credential]: Review use of credentials in CORS request for App Service
+--------------------------------------------------------------------------------
+01/23/2020 22:04:13-Checking: [AppService]-[Review use of credentials in CORS request for App Service] for resource [core-infra-dev]
+CORS Response header 'Access-Control-Allow-Credentials' is disabled for resource.
+--------------------------------------------------------------------------------
+**Passed**: [AppService]-[Review use of credentials in CORS request for App Service] for resource: [core-infra-dev]
+--------------------------------------------------------------------------------
+================================================================================ 
+
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: AppService] [ResourceGroupName: apimdemo01_rg] [ResourceName: core-infra-dev] 
+================================================================================
+################################################################################

@@ -1,0 +1,264 @@
+================================================================================
+AzSK Version: 4.5.1 
+================================================================================
+Method Name: Get-AzSKAzureServicesSecurityStatus (GRS)
+Input Parameters: 
+Name           Alias Value
+----           ----- -----
+SubscriptionId s     552cae66-87bd-4c0b-af77-fb2578fb7905 
+
+You can also use: grs -s 552cae66-87bd-4c0b-af77-fb2578fb7905  
+================================================================================
+Running AzSK cmdlet using a generic (org-neutral) policy...
+Scan events are currently not being sent to a Log Analytics workspace. To set one up refer: https://aka.ms/devopskit/setuplaws 
+Number of resources: 12
+Number of resources for which security controls will be evaluated: 12
+ 
+Checking resource [1/12] 
+================================================================================
+Starting analysis: [FeatureName: Storage] [ResourceGroupName: apimdemo01_rg] [ResourceName: fnapimdemo01dev] 
+--------------------------------------------------------------------------------
+Checking: [Storage]-[The Access Type for containers must not be set to 'Anonymous']
+Checking: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+**Disabled**: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+Checking: [Storage]-[Storage Account must be configured to log and monitor authentication request data]
+Checking: [Storage]-[HTTPS protocol must be used for accessing Storage Account resources]
+Checking: [Storage]-[Ensure that CORS access is granted to a minimal set of trusted origins and only required verbs are supported.]
+Checking: [Storage]-[Ensure that Firewall and Virtual Network access is granted to a minimal set of trusted origins]
+Checking: [Storage]-[Soft delete should be enabled to allow recovery of deleted blobs or blob snapshots]
+Checking: [Storage]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [Storage]-[Use AAD-based access for storage account]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: Storage] [ResourceGroupName: apimdemo01_rg] [ResourceName: fnapimdemo01dev] 
+================================================================================
+ 
+Checking resource [2/12] 
+================================================================================
+Starting analysis: [FeatureName: AppService] [ResourceGroupName: apimdemo01_rg] [ResourceName: core-infra-dev] 
+--------------------------------------------------------------------------------
+Checking: [AppService]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [AppService]-[Custom domain with SSL binding must be configured for App Service]
+Checking: [AppService]-[App Service must authenticate users using Azure Active Directory backed credentials]
+Checking: [AppService]-[Remote debugging must be turned off for App Service]
+Checking: [AppService]-[Web Sockets should be disabled for App Service]
+Checking: [AppService]-[The latest version of .NET framework version should be used for App Service]
+Checking: [AppService]-[Auditing and Monitoring must be enabled for App Service]
+Checking: [AppService]-[App Service must only be accessible over HTTPS]
+Checking: [AppService]-[WEBSITE_LOAD_CERTIFICATES parameter must not be set to '*' (i.e. all) for App Service]
+Checking: [AppService]-[Authorization level for HTTP Trigger function in a function app should be set to 'Function']
+Checking: [AppService]-[Functions app edit mode should be set to Read Only]
+Checking: [AppService]-[Ensure that CORS access is granted to a limited set of trusted origins.]
+Checking: [AppService]-[Use Managed Service Identity (MSI) for accessing other AAD-protected resources from the app service.]
+Checking: [AppService]-[Function App must only be accessible over HTTPS]
+Checking: [AppService]-[Use approved version of TLS for the App Service]
+Checking: [AppService]-[Extensions installed on a App Service should be carefully reviewed]
+Checking: [AppService]-[Setup IP-based access restrictions for App Service if feasible]
+Checking: [AppService]-[Review use of credentials in CORS request for App Service]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: AppService] [ResourceGroupName: apimdemo01_rg] [ResourceName: core-infra-dev] 
+================================================================================
+ 
+Checking resource [3/12] 
+================================================================================
+Starting analysis: [FeatureName: Storage] [ResourceGroupName: cost_mgmt_rg] [ResourceName: almcostmgmt] 
+--------------------------------------------------------------------------------
+Checking: [Storage]-[The Access Type for containers must not be set to 'Anonymous']
+Checking: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+**Disabled**: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+Checking: [Storage]-[Storage Account must be configured to log and monitor authentication request data]
+Checking: [Storage]-[HTTPS protocol must be used for accessing Storage Account resources]
+Checking: [Storage]-[Ensure that CORS access is granted to a minimal set of trusted origins and only required verbs are supported.]
+Checking: [Storage]-[Ensure that Firewall and Virtual Network access is granted to a minimal set of trusted origins]
+Checking: [Storage]-[Soft delete should be enabled to allow recovery of deleted blobs or blob snapshots]
+Checking: [Storage]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [Storage]-[Use AAD-based access for storage account]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: Storage] [ResourceGroupName: cost_mgmt_rg] [ResourceName: almcostmgmt] 
+================================================================================
+ 
+Checking resource [4/12] 
+================================================================================
+Starting analysis: [FeatureName: Storage] [ResourceGroupName: cost_mgmt_rg] [ResourceName: almcostmgmt2] 
+--------------------------------------------------------------------------------
+Checking: [Storage]-[The Access Type for containers must not be set to 'Anonymous']
+Checking: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+**Disabled**: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+Checking: [Storage]-[Storage Account must be configured to log and monitor authentication request data]
+Checking: [Storage]-[HTTPS protocol must be used for accessing Storage Account resources]
+Checking: [Storage]-[Ensure that CORS access is granted to a minimal set of trusted origins and only required verbs are supported.]
+Checking: [Storage]-[Ensure that Firewall and Virtual Network access is granted to a minimal set of trusted origins]
+Checking: [Storage]-[Soft delete should be enabled to allow recovery of deleted blobs or blob snapshots]
+Checking: [Storage]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [Storage]-[Use AAD-based access for storage account]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: Storage] [ResourceGroupName: cost_mgmt_rg] [ResourceName: almcostmgmt2] 
+================================================================================
+ 
+Checking resource [5/12] 
+================================================================================
+Starting analysis: [FeatureName: Databricks] [ResourceGroupName: rg_databricks_001] [ResourceName: workspace-001] 
+--------------------------------------------------------------------------------
+Checking: [Databricks]-[Secrets and keys must not be in plain text in notebooks and jobs]
+Checking: [Databricks]-[Use Azure Key Vault backed secret scope to hold secrets]
+Checking: [Databricks]-[Each secret scope should use an independent key vault]
+Checking: [Databricks]-[Personal access tokens (PAT) must have a shortest possible validity period]
+Checking: [Databricks]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [Databricks]-[Minimize the number of workspace admins]
+Checking: [Databricks]-[Workspace access control should be enabled]
+Checking: [Databricks]-[Cluster access control should be enabled]
+Checking: [Databricks]-[Job access control should be enabled]
+Checking: [Databricks]-[Guest accounts within the AAD tenant should not be granted admin access]
+Checking: [Databricks]-[Use of any virtual network peerings should be justified]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: Databricks] [ResourceGroupName: rg_databricks_001] [ResourceName: workspace-001] 
+================================================================================
+ 
+Checking resource [6/12] 
+================================================================================
+Starting analysis: [FeatureName: VirtualMachine] [ResourceGroupName: rg_iaas_001] [ResourceName: vm001001] 
+--------------------------------------------------------------------------------
+Checking: [VirtualMachine]-[Virtual Machine should have latest OS version installed]
+Checking: [VirtualMachine]-[Antimalware must be enabled with real time protection on Virtual Machine]
+Checking: [VirtualMachine]-[NSG must be configured for Virtual Machine]
+Checking: [VirtualMachine]-[Public IPs on a Virtual Machine should be carefully reviewed]
+Checking: [VirtualMachine]-[Virtual Machine must be in a healthy state in Azure Security Center]
+Checking: [VirtualMachine]-[Virtual Machine must have all the required OS patches installed.]
+Checking: [VirtualMachine]-[Virtual Machine must implement all the flagged ASC recommendations.]
+Checking: [VirtualMachine]-[Diagnostics (IaaSDiagnostics extension on Windows; LinuxDiagnostic extension on Linux) must be enabled on Virtual Machine]
+Checking: [VirtualMachine]-[Do not leave management ports open on Virtual Machines]
+Checking: [VirtualMachine]-[Vulnerability assessment solution should be installed on VM]
+Checking: [VirtualMachine]-[Guest Configuration extension must be deployed to the VM using Azure Policy assignment]
+Checking: [VirtualMachine]-[Guest config extension should report compliant status for all in-guest policies.]
+Checking: [VirtualMachine]-[All VM extensions required as per your Org policy must be deployed to the VM]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: VirtualMachine] [ResourceGroupName: rg_iaas_001] [ResourceName: vm001001] 
+================================================================================
+ 
+Checking resource [7/12] 
+================================================================================
+Starting analysis: [FeatureName: Storage] [ResourceGroupName: rg_iaas_001] [ResourceName: diag1c3407e369a8c27e] 
+--------------------------------------------------------------------------------
+Checking: [Storage]-[The Access Type for containers must not be set to 'Anonymous']
+Checking: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+**Disabled**: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+Checking: [Storage]-[Storage Account must be configured to log and monitor authentication request data]
+Checking: [Storage]-[HTTPS protocol must be used for accessing Storage Account resources]
+Checking: [Storage]-[Ensure that CORS access is granted to a minimal set of trusted origins and only required verbs are supported.]
+Checking: [Storage]-[Ensure that Firewall and Virtual Network access is granted to a minimal set of trusted origins]
+Checking: [Storage]-[Soft delete should be enabled to allow recovery of deleted blobs or blob snapshots]
+Checking: [Storage]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [Storage]-[Use AAD-based access for storage account]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: Storage] [ResourceGroupName: rg_iaas_001] [ResourceName: diag1c3407e369a8c27e] 
+================================================================================
+ 
+Checking resource [8/12] 
+================================================================================
+Starting analysis: [FeatureName: KeyVault] [ResourceGroupName: rg_sample_001] [ResourceName: kv001demo001] 
+--------------------------------------------------------------------------------
+Checking: [KeyVault]-[Azure Active Directory applications, which have access to Key Vault, must use certificate to authenticate to Key Vault]
+Checking: [KeyVault]-[Applications must not share a Key Vault unless they trust each other and they need access to the same secrets at runtime]
+Checking: [KeyVault]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [KeyVault]-[All Key Vault access policies must be defined with minimum required permissions to keys and secrets]
+Checking: [KeyVault]-[Advanced access policies must be configured on a need basis]
+Checking: [KeyVault]-[All Keys in Key Vault must be protected by HSM [Key Type = HSM Protected Key]]
+Checking: [KeyVault]-[All Keys and Secrets in Key Vault must have expiration dates]
+Checking: [KeyVault]-[Diagnostics logs must be enabled with a retention period of at least 365 days.]
+Checking: [KeyVault]-[Restrict the cryptographic operations permitted using keys to the ones actually required]
+Checking: [KeyVault]-[Soft delete must be enabled to allow recovery of deleted Key Vault and any objects (keys, secrets, etc.) contained in it.]
+Checking: [KeyVault]-[Too many versions of keys or secrets should not be in use.]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: KeyVault] [ResourceGroupName: rg_sample_001] [ResourceName: kv001demo001] 
+================================================================================
+ 
+Checking resource [9/12] 
+================================================================================
+Starting analysis: [FeatureName: VirtualNetwork] [ResourceGroupName: rg_spoke_001] [ResourceName: spoke001] 
+--------------------------------------------------------------------------------
+Checking: [VirtualNetwork]-[Minimize the number of Public IPs (i.e. NICs with PublicIP) on a virtual network]
+Checking: [VirtualNetwork]-[Use of IP Forwarding on any NIC in a virtual network should be scrutinized]
+Checking: [VirtualNetwork]-[There must not be any NSGs on the gateway subnet of a virtual network]
+**Disabled**: [VirtualNetwork]-[There must not be any NSGs on the gateway subnet of a virtual network]
+Checking: [VirtualNetwork]-[NSG should be used for subnets in a virtual network to permit traffic only on required inbound/outbound ports. NSGs should not have a rule to allow any-to-any traffic]
+Checking: [VirtualNetwork]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [VirtualNetwork]-[Presence of any virtual network gateways (GatewayType = VPN/ExpressRoute) in the virtual network must be justified]
+Checking: [VirtualNetwork]-[Use of any virtual network peerings should be justified]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: VirtualNetwork] [ResourceGroupName: rg_spoke_001] [ResourceName: spoke001] 
+================================================================================
+ 
+Checking resource [10/12] 
+================================================================================
+Starting analysis: [FeatureName: Storage] [ResourceGroupName: rg_test_3m27K1eM] [ResourceName: sacf6iyfnbch000] 
+--------------------------------------------------------------------------------
+Checking: [Storage]-[The Access Type for containers must not be set to 'Anonymous']
+Checking: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+**Disabled**: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+Checking: [Storage]-[Storage Account must be configured to log and monitor authentication request data]
+Checking: [Storage]-[HTTPS protocol must be used for accessing Storage Account resources]
+Checking: [Storage]-[Ensure that CORS access is granted to a minimal set of trusted origins and only required verbs are supported.]
+Checking: [Storage]-[Ensure that Firewall and Virtual Network access is granted to a minimal set of trusted origins]
+Checking: [Storage]-[Soft delete should be enabled to allow recovery of deleted blobs or blob snapshots]
+Checking: [Storage]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [Storage]-[Use AAD-based access for storage account]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: Storage] [ResourceGroupName: rg_test_3m27K1eM] [ResourceName: sacf6iyfnbch000] 
+================================================================================
+ 
+Checking resource [11/12] 
+================================================================================
+Starting analysis: [FeatureName: Storage] [ResourceGroupName: rg_test_3m27K1eM] [ResourceName: sacf6iyfnbch001] 
+--------------------------------------------------------------------------------
+Checking: [Storage]-[The Access Type for containers must not be set to 'Anonymous']
+Checking: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+**Disabled**: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+Checking: [Storage]-[Storage Account must be configured to log and monitor authentication request data]
+Checking: [Storage]-[HTTPS protocol must be used for accessing Storage Account resources]
+Checking: [Storage]-[Ensure that CORS access is granted to a minimal set of trusted origins and only required verbs are supported.]
+Checking: [Storage]-[Ensure that Firewall and Virtual Network access is granted to a minimal set of trusted origins]
+Checking: [Storage]-[Soft delete should be enabled to allow recovery of deleted blobs or blob snapshots]
+Checking: [Storage]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [Storage]-[Use AAD-based access for storage account]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: Storage] [ResourceGroupName: rg_test_3m27K1eM] [ResourceName: sacf6iyfnbch001] 
+================================================================================
+ 
+Checking resource [12/12] 
+================================================================================
+Starting analysis: [FeatureName: Storage] [ResourceGroupName: tfstate] [ResourceName: tfdemo001] 
+--------------------------------------------------------------------------------
+Checking: [Storage]-[The Access Type for containers must not be set to 'Anonymous']
+Checking: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+**Disabled**: [Storage]-[Alert rules must be configured for tracking anonymous activity]
+Checking: [Storage]-[Storage Account must be configured to log and monitor authentication request data]
+Checking: [Storage]-[HTTPS protocol must be used for accessing Storage Account resources]
+Checking: [Storage]-[Ensure that CORS access is granted to a minimal set of trusted origins and only required verbs are supported.]
+Checking: [Storage]-[Ensure that Firewall and Virtual Network access is granted to a minimal set of trusted origins]
+Checking: [Storage]-[Soft delete should be enabled to allow recovery of deleted blobs or blob snapshots]
+Checking: [Storage]-[All users/identities must be granted minimum required permissions using Role Based Access Control (RBAC)]
+Checking: [Storage]-[Use AAD-based access for storage account]
+--------------------------------------------------------------------------------
+Completed analysis: [FeatureName: Storage] [ResourceGroupName: tfstate] [ResourceName: tfdemo001] 
+================================================================================
+Summary   Total Passed Failed Verify Manual
+-------   ----- ------ ------ ------ ------
+High         55     26      3      4     22
+Medium       98     13     17     38     30
+Low           1      1      0      0      0
+Critical      1      0      1      0      0
+------   ------ ------ ------ ------ ------
+Total       155     40     21     42     52
+------   ------ ------ ------ ------ ------
+================================================================================
+** Next steps **
+Look at the individual control evaluation status in the CSV file.
+        a) If the control has passed, no action is necessary.
+        b) If the control has failed, look at the control evaluation detail in the LOG file to understand why.
+        c) If the control status says 'Verify', it means that human judgement is required to determine the final control status. Look at the control evaluation output in the LOG file to make a determination.
+        d) If the control status says 'Manual', it means that AzSK (currently) does not cover the control via automation OR AzSK is not able to fetch the data. You need to manually implement/verify it.
+
+Note: The 'Recommendation' column in the CSV file provides basic (generic) guidance that can help you fix a failed control. You can also use standard Azure product documentation. You should carefully consider the implications of making the required change in the context of your application. 
+Control results may not reflect attestation if you do not have permissions to read attestation data from AzSKRG
+--------------------------------------------------------------------------------
+Status and detailed logs have been exported to path - /Users/almmechanics/.local/share/Microsoft/AzSKLogs/Sub_Visual Studio Enterprise/20200123_220342_GRS
+================================================================================

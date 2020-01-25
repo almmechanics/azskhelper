@@ -1,0 +1,117 @@
+================================================================================
+Environment log
+AzSK Version: 4.5.1
+================================================================================
+Method Name: Get-AzSKAzureServicesSecurityStatus 
+Input Parameters: 
+@{
+    "SubscriptionId" = "552cae66-87bd-4c0b-af77-fb2578fb7905"
+}
+================================================================================
+Loaded PowerShell modules
+Name                            Version Path
+----                            ------- ----
+Az.Accounts                     1.6.0   /usr/local/share/powershell/Modules/Az.Accounts/1.6.0/Az.Accounts.psm1
+Az.AnalysisServices             1.1.0   /usr/local/share/powershell/Modules/Az.AnalysisServices/1.1.0/Az.AnalysisServices.psm1
+Az.ApiManagement                1.2.0   /usr/local/share/powershell/Modules/Az.ApiManagement/1.2.0/Az.ApiManagement.psm1
+Az.ApplicationInsights          1.0.0   /usr/local/share/powershell/Modules/Az.ApplicationInsights/1.0.0/Az.ApplicationInsights.psm1
+Az.Automation                   1.3.0   /usr/local/share/powershell/Modules/Az.Automation/1.3.0/Az.Automation.psm1
+Az.Batch                        1.1.0   /usr/local/share/powershell/Modules/Az.Batch/1.1.0/Az.Batch.psm1
+Az.Cdn                          1.3.0   /usr/local/share/powershell/Modules/Az.Cdn/1.3.0/Az.Cdn.psm1
+Az.Compute                      2.4.0   /usr/local/share/powershell/Modules/Az.Compute/2.4.0/Az.Compute.psm1
+Az.ContainerInstance            1.0.1   /usr/local/share/powershell/Modules/Az.ContainerInstance/1.0.1/Az.ContainerInstance.psm1
+Az.ContainerRegistry            1.0.1   /usr/local/share/powershell/Modules/Az.ContainerRegistry/1.0.1/Az.ContainerRegistry.psm1
+Az.DataFactory                  1.1.2   /usr/local/share/powershell/Modules/Az.DataFactory/1.1.2/Az.DataFactory.psm1
+Az.DataLakeAnalytics            1.0.0   /usr/local/share/powershell/Modules/Az.DataLakeAnalytics/1.0.0/Az.DataLakeAnalytics.psm1
+Az.DataLakeStore                1.2.1   /usr/local/share/powershell/Modules/Az.DataLakeStore/1.2.1/Az.DataLakeStore.psm1
+Az.EventHub                     1.2.0   /usr/local/share/powershell/Modules/Az.EventHub/1.2.0/Az.EventHub.psm1
+Az.HDInsight                    2.0.0   /usr/local/share/powershell/Modules/Az.HDInsight/2.0.0/Az.HDInsight.psm1
+Az.KeyVault                     1.2.0   /usr/local/share/powershell/Modules/Az.KeyVault/1.2.0/Az.KeyVault.psm1
+Az.LogicApp                     1.2.1   /usr/local/share/powershell/Modules/Az.LogicApp/1.2.1/Az.LogicApp.psm1
+Az.Monitor                      1.2.1   /usr/local/share/powershell/Modules/Az.Monitor/1.2.1/Az.Monitor.psm1
+Az.Network                      1.11.0  /usr/local/share/powershell/Modules/Az.Network/1.11.0/Az.Network.psm1
+Az.NotificationHubs             1.1.0   /usr/local/share/powershell/Modules/Az.NotificationHubs/1.1.0/Az.NotificationHubs.psm1
+Az.OperationalInsights          1.3.1   /usr/local/share/powershell/Modules/Az.OperationalInsights/1.3.1/Az.OperationalInsights.psm1
+Az.PolicyInsights               1.1.2   /usr/local/share/powershell/Modules/Az.PolicyInsights/1.1.2/Az.PolicyInsights.psm1
+Az.RedisCache                   1.1.0   /usr/local/share/powershell/Modules/Az.RedisCache/1.1.0/Az.RedisCache.psm1
+Az.Resources                    1.6.0   /usr/local/share/powershell/Modules/Az.Resources/1.6.0/Az.Resources.psm1
+Az.ServiceBus                   1.2.1   /usr/local/share/powershell/Modules/Az.ServiceBus/1.2.1/Az.ServiceBus.psm1
+Az.ServiceFabric                1.1.1   /usr/local/share/powershell/Modules/Az.ServiceFabric/1.1.1/Az.ServiceFabric.psm1
+Az.Sql                          1.13.0  /usr/local/share/powershell/Modules/Az.Sql/1.13.0/Az.Sql.psm1
+Az.Storage                      1.5.0   /usr/local/share/powershell/Modules/Az.Storage/1.5.0/Az.Storage.psm1
+Az.StreamAnalytics              1.0.0   /usr/local/share/powershell/Modules/Az.StreamAnalytics/1.0.0/Az.StreamAnalytics.psm1
+Az.TrafficManager               1.0.1   /usr/local/share/powershell/Modules/Az.TrafficManager/1.0.1/Az.TrafficManager.psm1
+Az.Websites                     1.3.0   /usr/local/share/powershell/Modules/Az.Websites/1.3.0/Az.Websites.psm1
+AzSK                            4.5.1   /Users/almmechanics/.local/share/powershell/Modules/AzSK/4.5.1/AzSK.psm1
+Microsoft.PowerShell.Management 6.1.0.0 /usr/local/microsoft/powershell/6/Modules/Microsoft.PowerShell.Management/Microsoft.PowerShell.Management.psd1
+Microsoft.PowerShell.Utility    6.1.0.0 /usr/local/microsoft/powershell/6/Modules/Microsoft.PowerShell.Utility/Microsoft.PowerShell.Utility.psd1
+PSReadLine                      2.0.0   /usr/local/microsoft/powershell/6/Modules/PSReadLine/PSReadLine.psm1
+================================================================================
+Logged-in user context
+@{
+    "ExtendedProperties" = @{
+        "Subscriptions" = "124875e9-5ea3-465a-abbc-347e51357b71,552cae66-87bd-4c0b-af77-fb2578fb7905,1b132a6b-f337-4978-9d13-7f4c8b43cc5b,a2995da5-737a-4639-8004-3b3fb8a1c390"; 
+        "Tenants" = "a2995da5-737a-4639-8004-3b3fb8a1c390,6ac8f9ad-b430-4047-abe4-4771aac907c2"
+    }; 
+    "Id" = "hamland@passport.com"; 
+    "Type" = "User"
+}
+================================================================================
+Az context
+@{
+    "Environment" = @{
+        "ActiveDirectoryAuthority" = "https://login.microsoftonline.com/"; 
+        "ActiveDirectoryServiceEndpointResourceId" = "https://management.core.windows.net/"; 
+        "AdTenant" = "Common"; 
+        "AnalysisServicesEndpointResourceId" = "https://region.asazure.windows.net"; 
+        "AzureAnalysisServicesEndpointSuffix" = "asazure.windows.net"; 
+        "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix" = "azuredatalakeanalytics.net"; 
+        "AzureDataLakeStoreFileSystemEndpointSuffix" = "azuredatalakestore.net"; 
+        "AzureKeyVaultDnsSuffix" = "vault.azure.net"; 
+        "AzureKeyVaultServiceEndpointResourceId" = "https://vault.azure.net"; 
+        "AzureOperationalInsightsEndpoint" = "https://api.loganalytics.io/v1"; 
+        "AzureOperationalInsightsEndpointResourceId" = "https://api.loganalytics.io"; 
+        "BatchEndpointResourceId" = "https://batch.core.windows.net/"; 
+        "DataLakeEndpointResourceId" = "https://datalake.azure.net/"; 
+        "EnableAdfsAuthentication" = $False; 
+        "ExtendedProperties" = @{
+            "OperationalInsightsEndpoint" = "https://api.loganalytics.io/v1"; 
+            "OperationalInsightsEndpointResourceId" = "https://api.loganalytics.io"; 
+            "AzureAnalysisServicesEndpointSuffix" = "asazure.windows.net"; 
+            "AnalysisServicesEndpointResourceId" = "https://region.asazure.windows.net"
+        }; 
+        "GalleryUrl" = "https://gallery.azure.com/"; 
+        "GraphEndpointResourceId" = "https://graph.windows.net/"; 
+        "GraphUrl" = "https://graph.windows.net/"; 
+        "ManagementPortalUrl" = "https://go.microsoft.com/fwlink/?LinkId=254433"; 
+        "Name" = "AzureCloud"; 
+        "OnPremise" = $False; 
+        "PublishSettingsFileUrl" = "https://go.microsoft.com/fwlink/?LinkID=301775"; 
+        "ResourceManagerUrl" = "https://management.azure.com/"; 
+        "ServiceManagementUrl" = "https://management.core.windows.net/"; 
+        "SqlDatabaseDnsSuffix" = ".database.windows.net"; 
+        "StorageEndpointSuffix" = "core.windows.net"; 
+        "TrafficManagerDnsSuffix" = "trafficmanager.net"; 
+        "VersionProfiles" = @()
+    }; 
+    "Subscription" = @{
+        "CurrentStorageAccount" = $Null; 
+        "CurrentStorageAccountName" = $Null; 
+        "ExtendedProperties" = @{
+            "Environment" = "AzureCloud"; 
+            "Account" = "hamland@passport.com"; 
+            "Tenants" = "a2995da5-737a-4639-8004-3b3fb8a1c390"
+        }; 
+        "Id" = "552cae66-87bd-4c0b-af77-fb2578fb7905"; 
+        "Name" = "Visual Studio Enterprise"; 
+        "State" = "Enabled"; 
+        "SubscriptionId" = "552cae66-87bd-4c0b-af77-fb2578fb7905"; 
+        "TenantId" = "a2995da5-737a-4639-8004-3b3fb8a1c390"
+    }; 
+    "Tenant" = @{
+        "ExtendedProperties" = @{}; 
+        "Id" = "a2995da5-737a-4639-8004-3b3fb8a1c390"; 
+        "TenantId" = "a2995da5-737a-4639-8004-3b3fb8a1c390"
+    }
+}
+================================================================================
