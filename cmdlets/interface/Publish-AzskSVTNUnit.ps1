@@ -1,6 +1,6 @@
 Set-StrictMode -Version latest
 
-function Publish-AzskNUnit
+function Publish-AzskSVTNUnit
 {
     [CmdletBinding()] 
     param(
@@ -17,23 +17,23 @@ function Publish-AzskNUnit
     try 
     {
         # Expand the AZSK result set
-        $ExpandedAzskLogs = Expand-Logs -Path $Path -AnalysisType 'ARM'
+        $ExpandedAzskLogs = Expand-Logs -Path $Path -AnalysisType 'SVT'
 
         # Generate parameters for the test run
-        $TestCases = @(ConvertTo-TestCases -ArmResults @(Get-ARMCheckerResultList -Path $ExpandedAzskLogs))
+        $TestCases = @(ConvertTo-SVTTestCases -SVTResults @(Get-SVTResultList -Path $ExpandedAzskLogs))
 
         # Invoke pester to validate convert from AZSK to NUnit
-        $summary = ConvertTo-Nunit -TestCases $TestCases -OutputPath $Path -OutputVariable $OutputVariable
+        $summary = ConvertTo-SVTNunit -TestCases $TestCases -OutputPath $Path -OutputVariable $OutputVariable
 
         if ($summary.FailedCount -gt 0)
         {
             if($EnableExit)
             {
-                Write-Error 'Not all AzSK tests completed successfully'
+                Write-Error 'Not all AzSK SVT tests completed successfully'
             }
             else 
             {
-                Write-Warning 'Not all AzSK tests completed successfully'
+                Write-Warning 'Not all AzSK SVT tests completed successfully'
             }
         }
     }
