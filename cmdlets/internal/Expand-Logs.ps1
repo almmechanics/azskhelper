@@ -7,11 +7,17 @@ function Expand-Logs  {
         [string]
         [ValidateScript({Test-Path $_})]
         [ValidateNotNullOrEmpty()]
-        $Path
+        $Path,
+
+        [string]
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [ValidateSet('ARM','SVT')]
+        $AnalysisType
     )
     
     # Find Singular AZSK archive
-    $ArmTemplateCheckerLog = Search-AzskLogs -Path $Path
+    $ArmTemplateCheckerLog = Search-AzskLogs -Path $Path -AnalysisType $AnalysisType
  
     $ExpandedPath= join-path ((New-TemporaryFile).DirectoryName) (get-date -Format 'a\z\sk-yyyyMMddHHmmss')
     New-Item $ExpandedPath -ItemType Directory -Force | out-null
