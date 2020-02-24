@@ -17,19 +17,17 @@ function Get-SVTResultList
         throw 'No "SecurityReport.csv" entries found.'
     }
 
-    if ($candidateFiles.count -gt 1)
+    $SVTContent = @()
+    foreach ($SVTFile in $candidateFiles)
     {
-        throw 'Multiple "SecurityReport.csv" entries found.'
+        Write-Verbose ('Processing file "{0}"' -f $SVTFile.FullName)
+        $SVTContent += @(gc $SVTFile.FullName | ConvertFrom-Csv)
     }
 
-    $ARMCheckerResults = ($candidateFiles | Select-Object -First 1).FullName
-    Write-Verbose ('Processing file "{0}"' -f $ARMCheckerResults)
-
-    $content = @((Get-Content $ARMCheckerResults) | ConvertFrom-CSV)
-    if ($content.count -eq 0)
+    if ($SVTContent.count -eq 0)
     {
         throw ('No Header/Content found in "{0}"' -f $ARMCheckerResults)
     }
 
-    return  $content
+    return  $SVTContent
 }
