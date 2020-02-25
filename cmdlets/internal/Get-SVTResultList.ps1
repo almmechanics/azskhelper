@@ -21,13 +21,13 @@ function Get-SVTResultList
     foreach ($SVTFile in $candidateFiles)
     {
         Write-Verbose ('Processing file "{0}"' -f $SVTFile.FullName)
-        $SVTContent += @(gc $SVTFile.FullName | ConvertFrom-Csv)
+        $SVTContent += @(Get-Content $SVTFile.FullName | ConvertFrom-Csv)
     }
 
     if ($SVTContent.count -eq 0)
     {
-        throw ('No Header/Content found in "{0}"' -f $ARMCheckerResults)
+        throw ('No Header/Content found.')
     }
 
-    return  $SVTContent
+    return @($SVTContent)
 }
