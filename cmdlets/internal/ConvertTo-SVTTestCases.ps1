@@ -13,10 +13,12 @@ function ConvertTo-SVTTestCases
 
     $SVTResults | ForEach-Object{
         $TestCases += @(
+            $ResourceGroupName = [string]::empty
+            if ($_ | Get-Member -Name 'ResourceGroupsName') {$ResourceGroupName = $_.ResourceGroupName}
+
             @{
                 FeatureName = $_.FeatureName
-                ResourceGroupName = $_.ResourceGroupName
-                ResourceName = $_.ResourceName
+                ResourceName = $ResourceGroupName
                 Description = $_.Description
                 Status = $_.Status
                 ControlSeverity = $_.ControlSeverity
@@ -24,4 +26,4 @@ function ConvertTo-SVTTestCases
         )
     }
     return $TestCases
-}
+} 
