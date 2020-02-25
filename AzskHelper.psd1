@@ -12,7 +12,7 @@
 RootModule = 'AzskHelper.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.1.0'
+ModuleVersion = '1.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Author = 'ALM Mechanics'
 CompanyName = 'ALM Mechanics'
 
 # Copyright statement for this module
-Copyright = '(c)2019 ALM Mechanics Ltd. All rights reserved.'
+Copyright = '(c)2020 ALM Mechanics Ltd. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Convert AzSK to NUnit output'

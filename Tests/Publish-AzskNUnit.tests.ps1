@@ -70,5 +70,48 @@ Describe 'Publish-AzskNUnit tests' {
 
             Assert-MockCalled ConvertTo-NUnit -Times 1 -Scope It
         }    
+
+        It 'Generates Errors if Enable Exit enabled' {
+            $ArmResults = @(@{})
+
+            Mock Expand-Logs {return 'TestDrive:/'} -Verifiable
+            Mock Write-Error{} -Verifiable 
+            Mock Write-Warning{} -Verifiable 
+            Mock Get-ARMCheckerResultList{return $ArmResults} -Verifiable
+            Mock ConvertTo-NUnit{return @{'FailedCount'='1'}} -Verifiable
+            Mock ConvertTo-TestCases{return @('testcase')} -Verifiable
+
+            {Publish-AzskNUnit -Path 'TestDrive:/Archive' -EnableExit} | should not throw
+
+            Assert-MockCalled Expand-Logs -Times 1 -Scope It
+            Assert-MockCalled Get-ARMCheckerResultList -Times 1 -Scope It
+            Assert-MockCalled ConvertTo-TestCases -Times 1 -Scope It
+            Assert-MockCalled Write-Error -Times 1 -Scope It
+            Assert-MockCalled Write-Warning{} -Times 0 -Scope It
+
+            Assert-MockCalled ConvertTo-NUnit -Times 1 -Scope It
+        }    
+
+        It 'Generated Warning if Enable Exit not enabled' {
+            $ArmResults = @(@{})
+
+            Mock Expand-Logs {return 'TestDrive:/'} -Verifiable
+            Mock Write-Error{} -Verifiable 
+            Mock Write-Warning{} -Verifiable 
+
+            Mock Get-ARMCheckerResultList{return $ArmResults} -Verifiable
+            Mock ConvertTo-NUnit{return @{'FailedCount'='1'}} -Verifiable
+            Mock ConvertTo-TestCases{return @('testcase')} -Verifiable
+
+            {Publish-AzskNUnit -Path 'TestDrive:/Archive' } | should not throw
+
+            Assert-MockCalled Expand-Logs -Times 1 -Scope It
+            Assert-MockCalled Get-ARMCheckerResultList -Times 1 -Scope It
+            Assert-MockCalled ConvertTo-TestCases -Times 1 -Scope It
+            Assert-MockCalled Write-Error -Times 0 -Scope It
+            Assert-MockCalled Write-Warning{} -Times 0 -Scope It
+
+            Assert-MockCalled ConvertTo-NUnit -Times 1 -Scope It
+        }   
     }
 }

@@ -27,7 +27,7 @@ Describe 'Expand-Logs tests' {
             Mock New-Item {return 'expanded_path'} -Verifiable
             Mock Expand-Archive {return 'expanded_path/azsk-123456'} -Verifiable
 
-            Expand-Logs -Path  'TestDrive:/Archive' | should not benullorempty
+            Expand-Logs -Path 'TestDrive:/Archive' -AnalysisType ARM | should not benullorempty
             Assert-MockCalled New-Item -Times 1 -Scope It
             Assert-MockCalled Expand-Archive -Times 1 -Scope It
             Assert-MockCalled Search-AzskLogs -Times 1 -Scope It
@@ -38,7 +38,7 @@ Describe 'Expand-Logs tests' {
             Mock New-Item {return 'expanded_path'} -Verifiable
             Mock Expand-Archive {return 'expanded_path/azsk-123456'} -Verifiable
 
-            (Expand-Logs -Path  'TestDrive:/Archive'| Split-Path -Leaf) | Should -BeLikeExactly 'azsk-*'
+            (Expand-Logs -AnalysisType ARM -Path 'TestDrive:/Archive' | Split-Path -Leaf) | Should -BeLikeExactly 'azsk-*'
             Assert-MockCalled New-Item -Times 1 -Scope It
             Assert-MockCalled Expand-Archive -Times 1 -Scope It
         }
