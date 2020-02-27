@@ -16,7 +16,7 @@ function ConvertTo-SVTTestCases
 
             # Allow optional ResourceGroupName parameter
             $ResourceGroupName = [string]::empty            
-            if ($_.ResourceGroupName)
+            if ($_ | Get-Member ResourceGroupName)
             {
                 $ResourceGroupName = ($_.ResourceGroupName)
             }
