@@ -13,12 +13,13 @@ function ConvertTo-SVTTestCases
 
     $SVTResults | ForEach-Object {
         # Allow optional ResourceGroupName parameter
-        if ($_.ContainsKey('ResourceGroupName'))
+        Write-Verbose $_
+        if ($_ | Get-Member -Name 'ResourceGroupName')
         {
             $ResourceGroupName = ($_.ResourceGroupName)
         }
         else {
-            $ResourceGroupName = [string]::empty
+            $ResourceGroupName = [string]::Empty
         }
 
         $TestCases += @(
