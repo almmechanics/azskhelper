@@ -16,7 +16,7 @@ Describe 'ConvertTo-SVTTestCases tests' {
     Context 'Convert SVT Results as pipeline'{
 
         It 'Can process pipeline' {
-            $SVTResults = @(@{FeatureName = 'ValidFeatureName';Description='ValidDescription';ResourceGroupName='ValidResourceGroupName';ControlSeverity='ControlSeverity';Status='ValidStatus'})
+            $SVTResults = @{FeatureName = 'ValidFeatureName';Description='ValidDescription';ResourceGroupName='ValidResourceGroupName';ControlSeverity='ValidControlSeverity';Status='ValidStatus'}
 
             $TestCases = @($SVTResults | ConvertTo-SVTTestCases)
             $TestCases.Count | should be 1
@@ -26,7 +26,7 @@ Describe 'ConvertTo-SVTTestCases tests' {
             $TestCaseFirst.ResourceGroupName | should be 'ValidResourceGroupName'
             $TestCaseFirst.Description | should be 'ValidDescription'
             $TestCaseFirst.Status | should be 'ValidStatus'
-            $TestCaseFirst.ControlSeverity | should be 'ControlSeverity'
+            $TestCaseFirst.ControlSeverity | should be 'ValidControlSeverity'
         }
 
 

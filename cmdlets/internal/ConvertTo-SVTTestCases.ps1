@@ -11,16 +11,17 @@ function ConvertTo-SVTTestCases
 
     $TestCases = @()
 
-    $SVTResults | ForEach-Object{
+    $SVTResults | ForEach-Object {
+        # Allow optional ResourceGroupName parameter
+        if ($_.ContainsKey('ResourceGroupName'))
+        {
+            $ResourceGroupName = ($_.ResourceGroupName)
+        }
+        else {
+            $ResourceGroupName = [string]::empty
+        }
+
         $TestCases += @(
-
-            # Allow optional ResourceGroupName parameter
-            $ResourceGroupName = [string]::empty            
-            if ($_ | Get-Member ResourceGroupName)
-            {
-                $ResourceGroupName = ($_.ResourceGroupName)
-            }
-
             @{
                 FeatureName = $_.FeatureName
                 ResourceGroupName = $ResourceGroupName
