@@ -20,7 +20,7 @@ function ConvertTo-SVTNUnit
     $OutputFile = Join-Path $OutputPath 'TEST-azsk-svt.nunit.xml'
     Write-Host ("##vso[task.setvariable variable={0}]{1}" -f $OutputVariable, $OutputFile)
 
-    $TestsToRun = Get-ModulePath -Folder 'azsktests' -Filename 'Azsk.svt.tests.ps1'
+    $TestsToRun = Get-ModulePath -Folder 'azsktests' -Filename 'Azsk.svt.tests.ps1' 
 
-    return (Invoke-Pester -Script (@{Path=$TestsToRun; parameters=@{TestCases=$TestCases}}) -OutputFile $OutputFile -OutputFormat NUnitXml -PassThru)
+    return (Invoke-Pester -path $TestsToRun -OutputFile $OutputFile -OutputFormat NUnitXml -PassThru)
 }

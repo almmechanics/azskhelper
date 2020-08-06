@@ -1,26 +1,26 @@
-$here = Split-Path -Parent $MyInvocation.MyCommand.Path
-$sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests', '' 
-. "$here\..\cmdlets\interface\$sut"
-. "$here\..\cmdlets\internal\Expand-Logs.ps1"
-. "$here\..\cmdlets\internal\Get-ARMCheckerResultList.ps1"
-. "$here\..\cmdlets\internal\ConvertTo-NUnit.ps1"
-. "$here\..\cmdlets\internal\ConvertTo-TestCases.ps1"
-
 Describe 'Publish-AzskNUnit tests' {
+    BeforeAll {
+        . $PSScriptRoot/../cmdlets/interface/Publish-AzskNUnit.ps1
+        . $PSScriptRoot/../cmdlets/internal/Expand-Logs.ps1
+        . $PSScriptRoot/../cmdlets/internal/Get-ARMCheckerResultList.ps1
+        . $PSScriptRoot/../cmdlets/internal/ConvertTo-NUnit.ps1
+        . $PSScriptRoot/../cmdlets/internal/ConvertTo-TestCases.ps1
+    }
+    
     Context 'Interface Tests' {
-        It 'Path parameter cannot be null' {
-            {Publish-AzskNUnit -Path $null} | should throw
+        It 'Path parameter cannot -be null' {
+            {Publish-AzskNUnit -Path $null} | should -throw
         }
 
-        It 'Path parameter cannot be empty' {
-            {Publish-AzskNUnit -Path @()} | should throw
+        It 'Path parameter cannot -be empty' {
+            {Publish-AzskNUnit -Path @()} | should -throw
         }
 
-        It 'Path parameter must be a valid path' {
-            {Publish-AzskNUnit -Path 'TestDrive:/invalid_path'} | should throw
+        It 'Path parameter must -be a valid path' {
+            {Publish-AzskNUnit -Path 'TestDrive:/invalid_path'} | should -throw
         }
 
-         It 'Fails if logs canot be expanded' {
+        It 'Fails if logs canot -be expanded' {
 
             New-Item -ItemType File -Path 'TestDrive:/Archive'
             Mock Expand-Logs {} -Verifiable
@@ -28,7 +28,7 @@ Describe 'Publish-AzskNUnit tests' {
             Mock Get-ARMCheckerResultList{} -Verifiable
             Mock ConvertTo-Nunit{} -Verifiable
 
-            {Publish-AzskNUnit -Path 'TestDrive:/Archive'} | should not throw
+            {Publish-AzskNUnit -Path 'TestDrive:/Archive'} | should -not -throw
 
             Assert-MockCalled Expand-Logs -Times 1 -Scope It
             Assert-MockCalled Write-Error -Times 1 -Scope It
@@ -43,7 +43,7 @@ Describe 'Publish-AzskNUnit tests' {
             Mock Get-ARMCheckerResultList{return @()} -Verifiable
             Mock ConvertTo-Nunit{} -Verifiable
 
-            {Publish-AzskNUnit -Path 'TestDrive:/Archive'} | should not throw
+            {Publish-AzskNUnit -Path 'TestDrive:/Archive'} | should -not -throw
 
             Assert-MockCalled Expand-Logs -Times 1 -Scope It
             Assert-MockCalled Write-Error -Times 1 -Scope It
@@ -61,7 +61,7 @@ Describe 'Publish-AzskNUnit tests' {
             Mock ConvertTo-NUnit{return @{'FailedCount'='0'}} -Verifiable
             Mock ConvertTo-TestCases{return @('testcase')} -Verifiable
 
-            {Publish-AzskNUnit -Path 'TestDrive:/Archive'} | should not throw
+            {Publish-AzskNUnit -Path 'TestDrive:/Archive'} | should -not -throw
 
             Assert-MockCalled Expand-Logs -Times 1 -Scope It
             Assert-MockCalled Get-ARMCheckerResultList -Times 1 -Scope It
@@ -81,13 +81,13 @@ Describe 'Publish-AzskNUnit tests' {
             Mock ConvertTo-NUnit{return @{'FailedCount'='1'}} -Verifiable
             Mock ConvertTo-TestCases{return @('testcase')} -Verifiable
 
-            {Publish-AzskNUnit -Path 'TestDrive:/Archive' -EnableExit} | should not throw
+            {Publish-AzskNUnit -Path 'TestDrive:/Archive' -EnableExit} | should -not -throw
 
             Assert-MockCalled Expand-Logs -Times 1 -Scope It
             Assert-MockCalled Get-ARMCheckerResultList -Times 1 -Scope It
             Assert-MockCalled ConvertTo-TestCases -Times 1 -Scope It
             Assert-MockCalled Write-Error -Times 1 -Scope It
-            Assert-MockCalled Write-Warning{} -Times 0 -Scope It
+            Assert-MockCalled Write-Warning -Times 0 -Scope It
 
             Assert-MockCalled ConvertTo-NUnit -Times 1 -Scope It
         }    
@@ -103,13 +103,13 @@ Describe 'Publish-AzskNUnit tests' {
             Mock ConvertTo-NUnit{return @{'FailedCount'='1'}} -Verifiable
             Mock ConvertTo-TestCases{return @('testcase')} -Verifiable
 
-            {Publish-AzskNUnit -Path 'TestDrive:/Archive' } | should not throw
+            {Publish-AzskNUnit -Path 'TestDrive:/Archive' } | should -not -throw
 
             Assert-MockCalled Expand-Logs -Times 1 -Scope It
             Assert-MockCalled Get-ARMCheckerResultList -Times 1 -Scope It
             Assert-MockCalled ConvertTo-TestCases -Times 1 -Scope It
             Assert-MockCalled Write-Error -Times 0 -Scope It
-            Assert-MockCalled Write-Warning{} -Times 0 -Scope It
+            Assert-MockCalled Write-Warning -Times 1 -Scope It
 
             Assert-MockCalled ConvertTo-NUnit -Times 1 -Scope It
         }   

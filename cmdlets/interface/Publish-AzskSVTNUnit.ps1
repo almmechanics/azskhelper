@@ -19,11 +19,9 @@ function Publish-AzskSVTNUnit
         # Expand the AZSK result set
         $ExpandedAzskLogs = Expand-Logs -Path $Path -AnalysisType 'SVT'
 
-        # Generate parameters for the test run
-        $TestCases = @(ConvertTo-SVTTestCases @(Get-SVTResultList -Path $ExpandedAzskLogs))
 
         # Invoke pester to validate convert from AZSK to NUnit
-        $summary = ConvertTo-SVTNunit -TestCases $TestCases -OutputPath $Path -OutputVariable $OutputVariable
+        $summary = ConvertTo-SVTNunit -OutputPath $Path -OutputVariable $OutputVariable
 
         if ($summary.FailedCount -gt 0)
         {
