@@ -1,21 +1,25 @@
 Describe "azsk-svt" {
-    context "SVT-NUnit"{
+    context "SVT-NUnit" {
         BeforeAll {
             . $PSScriptRoot/../cmdlets/internal/Get-SVTResultList.ps1
             . $PSScriptRoot/../cmdlets/internal/ConvertTo-SVTTestCases.ps1
         }
+        
+        $Path = $Global:AzSKPath
+
+        # Expand the AZSK result set
+        $ExpandedAzskLogs = Expand-Logs -Path $Path -AnalysisType 'SVT'
+        
         # Generate testcases for the test run
         $TestCases = @(ConvertTo-SVTTestCases @(Get-SVTResultList -Path $ExpandedAzskLogs))
  
         It " '[<ControlSeverity> <FeatureName>] <Description>' with <ResourceName> in resource group <ResourceGroupName>'" -TestCases $TestCases {
             Param($Description, $FeatureName, $ResourceName, $ResourceGroupName, $Status, $ControlSeverity)
             
-            if ($Status -eq 'Manual')
-            {
+            if ($Status -eq 'Manual') {
                 Set-ItResult -Inconclusive -Because 'Manual action required.'
             }
-            elseif  ($Status -eq 'Verify')
-            {
+            elseif ($Status -eq 'Verify') {
                 Set-ItResult -Pending -Because 'Manual verification required.'
             }
 

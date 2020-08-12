@@ -1,11 +1,10 @@
 Set-StrictMode -Version latest
 
-function Publish-AzskNUnit
-{
+function Publish-AzskNUnit {
     [CmdletBinding()] 
     param(
         [string]
-        [ValidateScript({Test-Path $_})]
+        [ValidateScript( { Test-Path $_ })]
         [ValidateNotNullOrEmpty()]
         $Path,
         [string]
@@ -14,31 +13,20 @@ function Publish-AzskNUnit
         [switch]
         $EnableExit
     )
-    try 
-    {
-        # Expand the AZSK result set
-        $ExpandedAzskLogs = Expand-Logs -Path $Path -AnalysisType 'ARM'
-
-        # Generate parameters for the test run
-        $TestCases = @(ConvertTo-TestCases -ArmResults @(Get-ARMCheckerResultList -Path $ExpandedAzskLogs))
-
+    try {
         # Invoke pester to validate convert from AZSK to NUnit
-        $summary = ConvertTo-Nunit -TestCases $TestCases -OutputPath $Path -OutputVariable $OutputVariable
+        $summary = ConvertTo-Nunit -OutputPath $Path -OutputVariable $OutputVariable
 
-        if ($summary.FailedCount -gt 0)
-        {
-            if($EnableExit)
-            {
+        if ($summary.FailedCount -gt 0) {
+            if ($EnableExit) {
                 Write-Error 'Not all AzSK tests completed successfully'
             }
-            else 
-            {
+            else {
                 Write-Warning 'Not all AzSK tests completed successfully'
             }
         }
     }
-    catch
-    {
+    catch {
         Write-Error $_
         return -1
     }

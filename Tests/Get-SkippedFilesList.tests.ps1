@@ -12,23 +12,21 @@ Describe 'Get-SkippedFilesList tests' {
 
     Context 'Interface Tests' {
         It 'Path array parameter cannot be null' {
-            {Get-SkippedFilesList -Path $null} | should -throw
+            { Get-SkippedFilesList -Path $null } | should -throw
         }
 
         It 'Path array parameter cannot be empty' {
-            {Get-SkippedFilesList -Path [string]::empty} | should -throw
+            { Get-SkippedFilesList -Path [string]::empty } | should -throw
         }
 
         It 'Path must -be a valid path' {
-            {Get-SkippedFilesList -Path 'invalid_path'} | should -throw
+            { Get-SkippedFilesList -Path 'invalid_path' } | should -throw
         }
     }
 
     Context 'Results processing' {
-
-
         It 'SkippedFiles not present' {
-            {Get-SkippedFilesList -path 'TestDrive:/SkippedFiles'} | should -throw
+            { Get-SkippedFilesList -path 'TestDrive:/SkippedFiles' } | should -throw
         }
 
         It 'SkippedFiles file empty' {
@@ -50,7 +48,7 @@ Describe 'Get-SkippedFilesList tests' {
             @('valid_file_1') | Out-File 'TestDrive:/SkippedFiles/2/1/SkippedFiles.Log'
             @('valid_file_2') | Out-File 'TestDrive:/SkippedFiles/2/2/SkippedFiles.Log'
 
-            {Get-SkippedFilesList -path 'TestDrive:/SkippedFiles/2'} | should -throw
+            { Get-SkippedFilesList -path 'TestDrive:/SkippedFiles/2' } | should -throw
         }
     }
 }

@@ -1,23 +1,22 @@
 Set-StrictMode -Version latest
-function ConvertTo-TestCases
-{
+function ConvertTo-TestCases {
     [CmdletBinding()] 
     param(
-        [parameter(ValueFromPipelineByPropertyName,ValueFromPipeline)]
+        [parameter(ValueFromPipelineByPropertyName, ValueFromPipeline)]
         [Array]
         [ValidateNotNullOrEmpty()]
         $ArmResults
     )
 
     $TestCases = @()
-    $ArmResults | ForEach-Object{
+    $ArmResults | ForEach-Object {
         $TestCases += @(
             @{
-                FeatureName = $_.FeatureName
-                Description = $_.Description
+                FeatureName        = $_.FeatureName
+                Description        = $_.Description
                 ResourceLineNumber = $_.ResourceLineNumber
-                FilePath = $_.FilePath
-                Status = $_.Status
+                FilePath           = $_.FilePath
+                Status             = $_.Status
             }
         )
     }

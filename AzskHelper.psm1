@@ -21,4 +21,4 @@ $internalPath = Join-Path $cmdletsPath 'internal'
 . (Join-Path $internalPath 'Search-AzskLogs.ps1')
 . (Join-Path $internalPath 'Search-AzskLogs.ps1')
 
-Write-Verbose 'azskhelper module loaded'
+Write-Verbose 'azskhelper module loaded'ßßßß

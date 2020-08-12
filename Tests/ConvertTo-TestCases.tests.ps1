@@ -5,18 +5,18 @@ Describe 'ConvertTo-TestCases tests' {
     
     Context 'Interface Tests' {
         It 'ArmResults array parameter cannot -be null' {
-            {ConvertTo-TestCases -ArmResults $null} | should -throw
+            { ConvertTo-TestCases -ArmResults $null } | should -throw
         }
 
         It 'ArmResults array parameter cannot -be empty' {
-            {ConvertTo-TestCases -ArmResults @()} | should -throw
+            { ConvertTo-TestCases -ArmResults @() } | should -throw
         }
     }
 
-    Context 'Convert ARM Results as pipeline'{
+    Context 'Convert ARM Results as pipeline' {
 
         It 'Can process pipeline' {
-            $ArmResults = @(@{FeatureName = 'ValidFeatureName';Description='ValidDescription';ResourceLineNumber='ValidLineNumber';FilePath='ValidFilePath';Status='ValidStatus'})
+            $ArmResults = @(@{FeatureName = 'ValidFeatureName'; Description = 'ValidDescription'; ResourceLineNumber = 'ValidLineNumber'; FilePath = 'ValidFilePath'; Status = 'ValidStatus' })
 
             $TestCases = @($ArmResults | ConvertTo-TestCases)
             $TestCases.Count | should -be 1
@@ -31,8 +31,8 @@ Describe 'ConvertTo-TestCases tests' {
 
 
         It 'Can process an array of ARM results' {
-            $ArmResults = @(@{FeatureName = 'ValidFeatureName1';Description='ValidDescription1';ResourceLineNumber='ValidLineNumber1';FilePath='ValidFilePath1';Status='ValidStatus1'},
-                            @{FeatureName = 'ValidFeatureName2';Description='ValidDescription2';ResourceLineNumber='ValidLineNumber2';FilePath='ValidFilePath2';Status='ValidStatus2'})
+            $ArmResults = @(@{FeatureName = 'ValidFeatureName1'; Description = 'ValidDescription1'; ResourceLineNumber = 'ValidLineNumber1'; FilePath = 'ValidFilePath1'; Status = 'ValidStatus1' },
+                @{FeatureName = 'ValidFeatureName2'; Description = 'ValidDescription2'; ResourceLineNumber = 'ValidLineNumber2'; FilePath = 'ValidFilePath2'; Status = 'ValidStatus2' })
 
             $TestCases = @(ConvertTo-TestCases -ArmResults $ArmResults)
             $TestCases.Count | should -be 2
@@ -53,10 +53,10 @@ Describe 'ConvertTo-TestCases tests' {
         }
     }
 
-    Context 'Convert ARM Results as parameter'{
+    Context 'Convert ARM Results as parameter' {
 
         It 'Can process 1 ARM result' {
-            $ArmResults = @(@{FeatureName = 'ValidFeatureName';Description='ValidDescription';ResourceLineNumber='ValidLineNumber';FilePath='ValidFilePath';Status='ValidStatus'})
+            $ArmResults = @(@{FeatureName = 'ValidFeatureName'; Description = 'ValidDescription'; ResourceLineNumber = 'ValidLineNumber'; FilePath = 'ValidFilePath'; Status = 'ValidStatus' })
 
             $TestCases = @(ConvertTo-TestCases -ArmResults $ArmResults)
             $TestCases.Count | should -be 1
@@ -71,8 +71,8 @@ Describe 'ConvertTo-TestCases tests' {
 
 
         It 'Can process an array of ARM results' {
-            $ArmResults = @(@{FeatureName = 'ValidFeatureName1';Description='ValidDescription1';ResourceLineNumber='ValidLineNumber1';FilePath='ValidFilePath1';Status='ValidStatus1'},
-                            @{FeatureName = 'ValidFeatureName2';Description='ValidDescription2';ResourceLineNumber='ValidLineNumber2';FilePath='ValidFilePath2';Status='ValidStatus2'})
+            $ArmResults = @(@{FeatureName = 'ValidFeatureName1'; Description = 'ValidDescription1'; ResourceLineNumber = 'ValidLineNumber1'; FilePath = 'ValidFilePath1'; Status = 'ValidStatus1' },
+                @{FeatureName = 'ValidFeatureName2'; Description = 'ValidDescription2'; ResourceLineNumber = 'ValidLineNumber2'; FilePath = 'ValidFilePath2'; Status = 'ValidStatus2' })
 
             $TestCases = @(ConvertTo-TestCases -ArmResults $ArmResults)
             $TestCases.Count | should -be 2

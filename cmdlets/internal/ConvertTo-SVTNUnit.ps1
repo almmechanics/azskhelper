@@ -1,17 +1,16 @@
 Set-StrictMode -Version latest
-function ConvertTo-SVTNUnit
-{
+function ConvertTo-SVTNUnit {
     [CmdletBinding()] 
     param(
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]
-        [ValidateScript({Test-Path $_})]
+        [ValidateScript( { Test-Path $_ })]
         $OutputPath,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]
         [ValidateNotNullOrEmpty()]
         $OutputVariable,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [array]
         [ValidateNotNullOrEmpty()]
         $TestCases
@@ -21,6 +20,7 @@ function ConvertTo-SVTNUnit
     Write-Host ("##vso[task.setvariable variable={0}]{1}" -f $OutputVariable, $OutputFile)
 
     $TestsToRun = Get-ModulePath -Folder 'azsktests' -Filename 'Azsk.svt.tests.ps1' 
+    $Global:AzSKPath = $OutputPath
 
     return (Invoke-Pester -path $TestsToRun -OutputFile $OutputFile -OutputFormat NUnitXml -PassThru)
 }

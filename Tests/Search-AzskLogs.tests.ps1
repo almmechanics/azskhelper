@@ -17,19 +17,19 @@ Describe 'Search-AzskLogs tests' {
 
     Context 'Interface Tests' {
         It 'Path array parameter cannot -be null' {
-            {Search-AzskLogs -Path $null} | should -throw
+            { Search-AzskLogs -Path $null } | should -throw
         }
 
         It 'Path array parameter cannot -be empty' {
-            {Search-AzskLogs -Path [string]::empty} | should -throw
+            { Search-AzskLogs -Path [string]::empty } | should -throw
         }
 
         It 'Path must -be a valid path' {
-            {Search-AzskLogs -Path 'invalid_path'} | should -throw
+            { Search-AzskLogs -Path 'invalid_path' } | should -throw
         }
 
         It 'Analysis tupe must -be a valid' {
-            {Search-AzskLogs -Path 'TestDrive:' -AnalysisType 'invalid'} | should -throw
+            { Search-AzskLogs -Path 'TestDrive:' -AnalysisType 'invalid' } | should -throw
         }
     }
 
@@ -37,7 +37,7 @@ Describe 'Search-AzskLogs tests' {
 
 
         It 'ArmTemplateChecker_Logs not present' {
-            {Search-AzskLogs -path 'TestDrive:/ArmTemplateChecker_Logs' -AnalysisType ARM} | should -throw
+            { Search-AzskLogs -path 'TestDrive:/ArmTemplateChecker_Logs' -AnalysisType ARM } | should -throw
         }
 
         It 'One ArmTemplateChecker_Logs file found' {
@@ -50,14 +50,14 @@ Describe 'Search-AzskLogs tests' {
             New-Item -ItemType File 'TestDrive:/ArmTemplateChecker_Logs/ArmTemplateChecker_Logs_2_1.zip'
             New-Item -ItemType File 'TestDrive:/ArmTemplateChecker_Logs/ArmTemplateChecker_Logs_2_2.zip'
 
-            {Search-AzskLogs -AnalysisType ARM -Path 'TestDrive:/ArmTemplateChecker_Logs'} | should -throw
+            { Search-AzskLogs -AnalysisType ARM -Path 'TestDrive:/ArmTemplateChecker_Logs' } | should -throw
         }
     }
 
     Context 'SVT Results processing' {
 
         It 'AzSK_ not present' {
-            {Search-AzskLogs -path 'TestDrive:/invalid' -AnalysisType SVT} | should -throw
+            { Search-AzskLogs -path 'TestDrive:/invalid' -AnalysisType SVT } | should -throw
         }
 
         It 'One AzSK_ file found' {
@@ -70,7 +70,7 @@ Describe 'Search-AzskLogs tests' {
             New-Item -ItemType File 'TestDrive:/AzSK_Valid/AzSK_21.zip' -Force
             New-Item -ItemType File 'TestDrive:/AzSK_Valid/AzSK_22.zip' -Force
 
-            {Search-AzskLogs -AnalysisType SVT -Path 'TestDrive:/AzSK_Valid/2'} | should -throw
+            { Search-AzskLogs -AnalysisType SVT -Path 'TestDrive:/AzSK_Valid/2' } | should -throw
         }
     }
 }

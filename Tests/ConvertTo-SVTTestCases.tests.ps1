@@ -5,18 +5,18 @@ Describe 'ConvertTo-SVTTestCases tests' {
     }
     Context 'Interface Tests' {
         It 'SVTResults array parameter cannot be null' {
-            {ConvertTo-SVTTestCases -ArmResults $null} | should -throw
+            { ConvertTo-SVTTestCases -ArmResults $null } | should -throw
         }
 
         It 'SVTResults array parameter cannot be empty' {
-            {ConvertTo-SVTTestCases -ArmResults @()} | should -throw
+            { ConvertTo-SVTTestCases -ArmResults @() } | should -throw
         }
     }
 
-    Context 'Convert SVT Results as pipeline'{
+    Context 'Convert SVT Results as pipeline' {
 
         It 'Can process pipeline with a "ResourceGroupName" parameter' {
-            $SVTResults = @([PSCustomObject](@{FeatureName = 'ValidFeatureName';Description='ValidDescription';ResourceGroupName='ValidResourceGroupName';ControlSeverity='ValidControlSeverity';Status='ValidStatus'}))
+            $SVTResults = @([PSCustomObject](@{FeatureName = 'ValidFeatureName'; Description = 'ValidDescription'; ResourceGroupName = 'ValidResourceGroupName'; ControlSeverity = 'ValidControlSeverity'; Status = 'ValidStatus' }))
 
             $TestCases = @($SVTResults | ConvertTo-SVTTestCases)
             $TestCases.Count | should -be 1
@@ -30,7 +30,7 @@ Describe 'ConvertTo-SVTTestCases tests' {
         }
 
         It 'Can process pipeline without a "ResourceGroupName" parameter' {
-            $SVTResults = @([PSCustomObject]@{FeatureName = 'ValidFeatureName';Description='ValidDescription';ControlSeverity='ValidControlSeverity';Status='ValidStatus'})
+            $SVTResults = @([PSCustomObject]@{FeatureName = 'ValidFeatureName'; Description = 'ValidDescription'; ControlSeverity = 'ValidControlSeverity'; Status = 'ValidStatus' })
 
             $TestCases = @($SVTResults | ConvertTo-SVTTestCases)
             $TestCases.Count | should -be 1
@@ -45,7 +45,7 @@ Describe 'ConvertTo-SVTTestCases tests' {
 
         It 'Can process an array of SVT results' {
             $SVTResults = @(
-                [PSCustomObject]@{FeatureName = 'ValidFeatureName1';Description='ValidDescription1';ControlSeverity='ValidControlSeverity1';Status='ValidStatus1'}
+                [PSCustomObject]@{FeatureName = 'ValidFeatureName1'; Description = 'ValidDescription1'; ControlSeverity = 'ValidControlSeverity1'; Status = 'ValidStatus1' }
             )
 
             $TestCases = @($SVTResults | ConvertTo-SVTTestCases )
@@ -59,10 +59,10 @@ Describe 'ConvertTo-SVTTestCases tests' {
         }
     }
 
-    Context 'Convert SVT Results as parameter'{
+    Context 'Convert SVT Results as parameter' {
 
         It 'Can process 1 SVT result' {
-            $SVTResults = @([PSCustomObject](@{FeatureName = 'ValidFeatureName';Description='ValidDescription';ResourceGroupName='ValidResourceGroupName';ControlSeverity='ControlSeverity';Status='ValidStatus'}))
+            $SVTResults = @([PSCustomObject](@{FeatureName = 'ValidFeatureName'; Description = 'ValidDescription'; ResourceGroupName = 'ValidResourceGroupName'; ControlSeverity = 'ControlSeverity'; Status = 'ValidStatus' }))
 
             $TestCases = @(ConvertTo-SVTTestCases -SVTResults $SVTResults)
             $TestCases.Count | should -be 1
@@ -77,7 +77,7 @@ Describe 'ConvertTo-SVTTestCases tests' {
 
 
         It 'Can process SVT without a "ResourceGroupName" parameter' {
-            $SVTResults = @([PSCustomObject](@{FeatureName = 'ValidFeatureName';Description='ValidDescription';ControlSeverity='ControlSeverity';Status='ValidStatus'}))
+            $SVTResults = @([PSCustomObject](@{FeatureName = 'ValidFeatureName'; Description = 'ValidDescription'; ControlSeverity = 'ControlSeverity'; Status = 'ValidStatus' }))
 
             $TestCases = @(ConvertTo-SVTTestCases -SVTResults $SVTResults)
             $TestCases.Count | should -be 1
@@ -92,8 +92,8 @@ Describe 'ConvertTo-SVTTestCases tests' {
 
 
         It 'Can process an array of SVT results' {
-            $SVTResults = @([PSCustomObject](@{FeatureName = 'ValidFeatureName1';Description='ValidDescription1';ResourceGroupName='ValidResourceGroupName1';ControlSeverity='ValidControlSeverity1';Status='ValidStatus1'}),
-            [PSCustomObject](@{FeatureName = 'ValidFeatureName2';Description='ValidDescription2';ResourceGroupName='ValidResourceGroupName2';ControlSeverity='ValidControlSeverity2';Status='ValidStatus2'}))
+            $SVTResults = @([PSCustomObject](@{FeatureName = 'ValidFeatureName1'; Description = 'ValidDescription1'; ResourceGroupName = 'ValidResourceGroupName1'; ControlSeverity = 'ValidControlSeverity1'; Status = 'ValidStatus1' }),
+                [PSCustomObject](@{FeatureName = 'ValidFeatureName2'; Description = 'ValidDescription2'; ResourceGroupName = 'ValidResourceGroupName2'; ControlSeverity = 'ValidControlSeverity2'; Status = 'ValidStatus2' }))
 
             $TestCases = @(ConvertTo-SVTTestCases -SVTResults $SVTResults)
             $TestCases.Count | should -be 2
