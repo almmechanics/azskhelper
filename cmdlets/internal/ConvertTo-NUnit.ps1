@@ -9,12 +9,8 @@ function ConvertTo-NUnit {
         [Parameter(Mandatory = $true)]
         [string]
         [ValidateNotNullOrEmpty()]
-        $OutputVariable,
-        [Parameter(Mandatory = $true)]
-        [array]
-        [ValidateNotNullOrEmpty()]
-        $TestCases
-    )
+        $OutputVariable
+        )
 
     $OutputFile = Join-Path $OutputPath 'TEST-azsk.nunit.xml'
     Write-Host ("##vso[task.setvariable variable={0}]{1}" -f $OutputVariable, $OutputFile)

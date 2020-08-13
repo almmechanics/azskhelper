@@ -1,5 +1,7 @@
 Set-StrictMode -Version Latest
 
+Write-Verbose 'Importing Pester 5.x'
+
 Import-Module 'pester' -MinimumVersion '5.0.0' -Verbose
 
 $cmdletsPath = Join-Path $PSScriptRoot 'cmdlets'
@@ -21,4 +23,4 @@ $internalPath = Join-Path $cmdletsPath 'internal'
 . (Join-Path $internalPath 'Search-AzskLogs.ps1')
 . (Join-Path $internalPath 'Search-AzskLogs.ps1')
 
-Write-Verbose 'azskhelper module loaded'ßßßß
+Write-Verbose 'azskhelper module loaded'

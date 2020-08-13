@@ -4,8 +4,9 @@ Describe "azsk" {
                 . $PSScriptRoot/../cmdlets/internal/ConvertTo-TestCases.ps1
         }
 
+        # get the AzSK zip file path
         $Path = $Global:AzSKPath
-
+        
         # Expand the AZSK result set
         $ExpandedAzskLogs = Expand-Logs -Path $Path -AnalysisType 'ARM'
 

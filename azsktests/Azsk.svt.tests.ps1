@@ -5,6 +5,7 @@ Describe "azsk-svt" {
             . $PSScriptRoot/../cmdlets/internal/ConvertTo-SVTTestCases.ps1
         }
         
+        # get the AzSK zip file path
         $Path = $Global:AzSKPath
 
         # Expand the AZSK result set
