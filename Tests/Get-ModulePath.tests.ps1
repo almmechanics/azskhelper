@@ -31,14 +31,14 @@ Describe 'Get-ModulePath tests' {
             Mock Get-Module { return @{ModuleBase = (Join-Path 'TestDrive:' 'ModuleBase') } } -Verifiable
 
             Get-ModulePath -Filename 'Valid.filename' | should -be 'TestDrive:/ModuleBase/./Valid.filename'
-            Assert-MockCalled Get-Module -Exactly 1 -Scope It
+            Should -Invoke Get-Module -Exactly 1 -Scope It
         }
 
         It 'custom folder name is processed' {
             Mock Get-Module { return @{ModuleBase = (Join-Path 'TestDrive:' 'ModuleBase') } } -Verifiable
 
             Get-ModulePath -Folder 'custom' -Filename 'Valid.filename' | should -be 'TestDrive:/ModuleBase/custom/Valid.filename'
-            Assert-MockCalled Get-Module -Exactly 1 -Scope It
+            Should -Invoke Get-Module -Exactly 1 -Scope It
         }
     }
 } 

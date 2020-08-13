@@ -53,10 +53,10 @@ Describe 'ConvertTo-NUnit tests' {
 
             { ConvertTo-NUnit -OutputPath 'TestDrive:/convert' -TestCases @('testcase') -OutputVariable 'valid' } | should -not -throw
 
-            Assert-MockCalled Join-Path -Times 1 -Scope It
-            Assert-MockCalled Write-Host -Times 1 -Scope It
-            Assert-MockCalled Get-ModulePath -Times 1 -Scope It
-            Assert-MockCalled Invoke-Pester -Times 1 -Scope It
+            Should -Invoke Join-Path -Exactly 1 -Scope It
+            Should -Invoke Write-Host -Exactly 1 -Scope It
+            Should -Invoke Get-ModulePath -Exactly 1 -Scope It
+            Should -Invoke Invoke-Pester -Exactly 1 -Scope It
         }
     }
 }

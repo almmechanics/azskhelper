@@ -15,8 +15,17 @@ function ConvertTo-NUnit {
     $OutputFile = Join-Path $OutputPath 'TEST-azsk.nunit.xml'
     Write-Host ("##vso[task.setvariable variable={0}]{1}" -f $OutputVariable, $OutputFile)
 
-    $TestsToRun = Get-ModulePath -Folder 'azsktests' -Filename 'Azsk.arm.tests.ps1'
-    $Global:AzSKPath = $OutputPath
+    $Global:AzSKPath = $OutputPath       
 
-    return (Invoke-Pester -path $TestsToRun -OutputFile $OutputFile -OutputFormat NUnitXml -PassThru)
+    $TestsToRun = Get-ModulePath -Folder 'azsktests' -Filename 'Azsk.arm.tests.ps1'
+
+    $configuration = [PesterConfiguration]::Default
+    $configuration.Run.Exit = $True
+    $Configuration.TestResult.Enabled = $True
+    $configuration.TestResult.OutputPath = $OutputFile
+    $configuration.TestResult.OutputFormat = 'NUnitXml'
+    $configuration.Run.Path = $TestsToRun
+    $configuration.Run.PassThru = $True
+
+    return (Invoke-Pester -Configuration $configuration)
 }

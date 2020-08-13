@@ -3,12 +3,10 @@ Describe "azsk" {
                 . $PSScriptRoot/../cmdlets/internal/Get-ARMCheckerResultList.ps1
                 . $PSScriptRoot/../cmdlets/internal/ConvertTo-TestCases.ps1
         }
-
-        # get the AzSK zip file path
-        $Path = $Global:AzSKPath
+        
         
         # Expand the AZSK result set
-        $ExpandedAzskLogs = Expand-Logs -Path $Path -AnalysisType 'ARM'
+        $ExpandedAzskLogs = Expand-Logs -Path $Global:AzSKPath -AnalysisType 'ARM'
 
         # Generate testcases for the test run
         $TestCases = @(ConvertTo-TestCases @(Get-ARMCheckerResultList -Path $ExpandedAzskLogs))

@@ -34,9 +34,9 @@ Describe 'Expand-Logs tests' {
             Mock Expand-Archive { return 'expanded_path/azsk-123456' } -Verifiable
 
             (Expand-Logs -Path 'TestDrive:/Archive' -AnalysisType ARM) | should -Not -BeNullOrEmpty
-            Assert-MockCalled New-Item -Times 1 -Scope It
-            Assert-MockCalled Expand-Archive -Times 1 -Scope It
-            Assert-MockCalled Search-AzskLogs -Times 1 -Scope It
+            Should -Invoke New-Item -Exactly 1 -Scope It
+            Should -Invoke Expand-Archive -Exactly 1 -Scope It
+            Should -Invoke Search-AzskLogs -Exactly 1 -Scope It
         }
 
         It 'Creates a folder using the pattern "azsk-"' {
@@ -45,8 +45,8 @@ Describe 'Expand-Logs tests' {
             Mock Expand-Archive { return 'expanded_path/azsk-123456.zip' } -Verifiable
 
             (Expand-Logs -AnalysisType ARM -Path 'TestDrive:/Archive' | Split-Path -Leaf) | Should -BeLike 'azsk-*'
-            Assert-MockCalled New-Item -Times 1 -Scope It
-            Assert-MockCalled Expand-Archive -Times 1 -Scope It
+            Should -Invoke New-Item -Exactly 1 -Scope It
+            Should -Invoke Expand-Archive -Exactly 1 -Scope It
         }
     }
 }

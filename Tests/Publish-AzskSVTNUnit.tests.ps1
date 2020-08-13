@@ -29,10 +29,10 @@ Describe 'Publish-AzskSVTNUnit tests' {
 
             { Publish-AzskSVTNUnit -Path 'TestDrive:/Archive' } | should -not -throw
 
-            Assert-MockCalled Expand-Logs -Times 1 -Scope It
-            Assert-MockCalled Write-Error -Times 1 -Scope It
-            Assert-MockCalled Get-SVTResultList -Times 0 -Scope It
-            Assert-MockCalled ConvertTo-SVTNUnit -Times 0 -Scope It
+            Should -Invoke Expand-Logs -Exactly 1 -Scope It
+            Should -Invoke Write-Error -Exactly 1 -Scope It
+            Should -Invoke Get-SVTResultList -Exactly 0 -Scope It
+            Should -Invoke ConvertTo-SVTNUnit -Exactly 0 -Scope It
         }
 
         It 'Fails if testcases are empty' {
@@ -43,10 +43,10 @@ Describe 'Publish-AzskSVTNUnit tests' {
 
             { Publish-AzskSVTNUnit -Path 'TestDrive:/Archive' } | should -not -throw
 
-            Assert-MockCalled Expand-Logs -Times 1 -Scope It
-            Assert-MockCalled Write-Error -Times 1 -Scope It
-            Assert-MockCalled Get-SVTResultList -Times 1 -Scope It
-            Assert-MockCalled ConvertTo-SVTNUnit -Times 0 -Scope It
+            Should -Invoke Expand-Logs -Exactly 1 -Scope It
+            Should -Invoke Write-Error -Exactly 1 -Scope It
+            Should -Invoke Get-SVTResultList -Exactly 1 -Scope It
+            Should -Invoke ConvertTo-SVTNUnit -Exactly 0 -Scope It
         }    
 
         It 'Passes testcases to Pester' {
@@ -61,12 +61,12 @@ Describe 'Publish-AzskSVTNUnit tests' {
 
             { Publish-AzskSVTNUnit -Path 'TestDrive:/Archive' } | should -not -throw
 
-            Assert-MockCalled Expand-Logs -Times 1 -Scope It
-            Assert-MockCalled Get-SVTResultList -Times 1 -Scope It
-            Assert-MockCalled ConvertTo-SVTTestCases -Times 1 -Scope It
-            Assert-MockCalled Write-Error -Times 0 -Scope It
+            Should -Invoke Expand-Logs -Exactly 1 -Scope It
+            Should -Invoke Get-SVTResultList -Exactly 1 -Scope It
+            Should -Invoke ConvertTo-SVTTestCases -Exactly 1 -Scope It
+            Should -Invoke Write-Error -Exactly 0 -Scope It
 
-            Assert-MockCalled ConvertTo-SVTNUnit -Times 1 -Scope It
+            Should -Invoke ConvertTo-SVTNUnit -Exactly 1 -Scope It
         }    
 
         It 'Generates Errors if Enable Exit enabled' {
@@ -81,12 +81,12 @@ Describe 'Publish-AzskSVTNUnit tests' {
 
             { Publish-AzskSVTNUnit -Path 'TestDrive:/Archive' -EnableExit } | should -not -throw
 
-            Assert-MockCalled Expand-Logs -Times 1 -Scope It
-            Assert-MockCalled Get-SVTResultList -Times 1 -Scope It
-            Assert-MockCalled ConvertTo-SVTTestCases -Times 1 -Scope It
-            Assert-MockCalled Write-Error -Times 1 -Scope It
-            Assert-MockCalled Write-Warning -Times 0 -Scope It
-            Assert-MockCalled ConvertTo-SVTNUnit -Times 1 -Scope It
+            Should -Invoke Expand-Logs -Exactly 1 -Scope It
+            Should -Invoke Get-SVTResultList -Exactly 1 -Scope It
+            Should -Invoke ConvertTo-SVTTestCases -Exactly 1 -Scope It
+            Should -Invoke Write-Error -Exactly 1 -Scope It
+            Should -Invoke Write-Warning -Exactly 0 -Scope It
+            Should -Invoke ConvertTo-SVTNUnit -Exactly 1 -Scope It
         }    
 
         It 'Generated Warning if Enable Exit not enabled' {
@@ -102,12 +102,12 @@ Describe 'Publish-AzskSVTNUnit tests' {
 
             { Publish-AzskSVTNUnit -Path 'TestDrive:/Archive' } | should -not -throw
 
-            Assert-MockCalled Expand-Logs -Times 1 -Scope It
-            Assert-MockCalled Get-SVTResultList -Times 1 -Scope It
-            Assert-MockCalled ConvertTo-SVTTestCases -Times 1 -Scope It
-            Assert-MockCalled Write-Error -Times 0 -Scope It
-            Assert-MockCalled Write-Warning -Times 1 -Scope It
-            Assert-MockCalled ConvertTo-SVTNUnit -Times 1 -Scope It
+            Should -Invoke Expand-Logs -Exactly 1 -Scope It
+            Should -Invoke Get-SVTResultList -Exactly 1 -Scope It
+            Should -Invoke ConvertTo-SVTTestCases -Exactly 1 -Scope It
+            Should -Invoke Write-Error -Exactly 0 -Scope It
+            Should -Invoke Write-Warning -Exactly 1 -Scope It
+            Should -Invoke ConvertTo-SVTNUnit -Exactly 1 -Scope It
         }   
     }
 }

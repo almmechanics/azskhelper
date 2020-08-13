@@ -30,10 +30,10 @@ Describe 'Publish-AzskNUnit tests' {
 
             { Publish-AzskNUnit -Path 'TestDrive:/Archive' } | should -not -throw
 
-            Assert-MockCalled Expand-Logs -Times 1 -Scope It
-            Assert-MockCalled Write-Error -Times 1 -Scope It
-            Assert-MockCalled Get-ARMCheckerResultList -Times 0 -Scope It
-            Assert-MockCalled ConvertTo-NUnit -Times 0 -Scope It
+            Should -Invoke Expand-Logs -Exactly 1 -Scope It
+            Should -Invoke Write-Error -Exactly 1 -Scope It
+            Should -Invoke Get-ARMCheckerResultList -Exactly 0 -Scope It
+            Should -Invoke ConvertTo-NUnit -Exactly 0 -Scope It
         }
 
         It 'Fails if testcases are empty' {
@@ -45,10 +45,10 @@ Describe 'Publish-AzskNUnit tests' {
 
             { Publish-AzskNUnit -Path 'TestDrive:/Archive' } | should -not -throw
 
-            Assert-MockCalled Expand-Logs -Times 1 -Scope It
-            Assert-MockCalled Write-Error -Times 1 -Scope It
-            Assert-MockCalled Get-ARMCheckerResultList -Times 1 -Scope It
-            Assert-MockCalled ConvertTo-NUnit -Times 0 -Scope It
+            Should -Invoke Expand-Logs -Exactly 1 -Scope It
+            Should -Invoke Write-Error -Exactly 1 -Scope It
+            Should -Invoke Get-ARMCheckerResultList -Exactly 1 -Scope It
+            Should -Invoke ConvertTo-NUnit -Exactly 0 -Scope It
         }    
 
         It 'Passes testcases to Pester' {
@@ -63,12 +63,12 @@ Describe 'Publish-AzskNUnit tests' {
 
             { Publish-AzskNUnit -Path 'TestDrive:/Archive' } | should -not -throw
 
-            Assert-MockCalled Expand-Logs -Times 1 -Scope It
-            Assert-MockCalled Get-ARMCheckerResultList -Times 1 -Scope It
-            Assert-MockCalled ConvertTo-TestCases -Times 1 -Scope It
-            Assert-MockCalled Write-Error -Times 0 -Scope It
+            Should -Invoke Expand-Logs -Exactly 1 -Scope It
+            Should -Invoke Get-ARMCheckerResultList -Exactly 1 -Scope It
+            Should -Invoke ConvertTo-TestCases -Exactly 1 -Scope It
+            Should -Invoke Write-Error -Exactly 0 -Scope It
 
-            Assert-MockCalled ConvertTo-NUnit -Times 1 -Scope It
+            Should -Invoke ConvertTo-NUnit -Exactly 1 -Scope It
         }    
 
         It 'Generates Errors if Enable Exit enabled' {
@@ -83,13 +83,13 @@ Describe 'Publish-AzskNUnit tests' {
 
             { Publish-AzskNUnit -Path 'TestDrive:/Archive' -EnableExit } | should -not -throw
 
-            Assert-MockCalled Expand-Logs -Times 1 -Scope It
-            Assert-MockCalled Get-ARMCheckerResultList -Times 1 -Scope It
-            Assert-MockCalled ConvertTo-TestCases -Times 1 -Scope It
-            Assert-MockCalled Write-Error -Times 1 -Scope It
-            Assert-MockCalled Write-Warning -Times 0 -Scope It
+            Should -Invoke Expand-Logs -Exactly 1 -Scope It
+            Should -Invoke Get-ARMCheckerResultList -Exactly 1 -Scope It
+            Should -Invoke ConvertTo-TestCases -Exactly 1 -Scope It
+            Should -Invoke Write-Error -Exactly 1 -Scope It
+            Should -Invoke Write-Warning -Exactly 0 -Scope It
 
-            Assert-MockCalled ConvertTo-NUnit -Times 1 -Scope It
+            Should -Invoke ConvertTo-NUnit -Exactly 1 -Scope It
         }    
 
         It 'Generated Warning if Enable Exit not enabled' {
@@ -105,13 +105,13 @@ Describe 'Publish-AzskNUnit tests' {
 
             { Publish-AzskNUnit -Path 'TestDrive:/Archive' } | should -not -throw
 
-            Assert-MockCalled Expand-Logs -Times 1 -Scope It
-            Assert-MockCalled Get-ARMCheckerResultList -Times 1 -Scope It
-            Assert-MockCalled ConvertTo-TestCases -Times 1 -Scope It
-            Assert-MockCalled Write-Error -Times 0 -Scope It
-            Assert-MockCalled Write-Warning -Times 1 -Scope It
+            Should -Invoke Expand-Logs -Exactly 1 -Scope It
+            Should -Invoke Get-ARMCheckerResultList -Exactly 1 -Scope It
+            Should -Invoke ConvertTo-TestCases -Exactly 1 -Scope It
+            Should -Invoke Write-Error -Exactly 0 -Scope It
+            Should -Invoke Write-Warning -Exactly 1 -Scope It
 
-            Assert-MockCalled ConvertTo-NUnit -Times 1 -Scope It
+            Should -Invoke ConvertTo-NUnit -Exactly 1 -Scope It
         }   
     }
 }
