@@ -5,11 +5,8 @@ Describe "azsk-svt" {
             . $PSScriptRoot/../cmdlets/internal/ConvertTo-SVTTestCases.ps1
         }
         
-        # get the AzSK zip file path
-        $Path = $Global:AzSKPath
-
         # Expand the AZSK result set
-        $ExpandedAzskLogs = Expand-Logs -Path $Path -AnalysisType 'SVT'
+        $ExpandedAzskLogs = Expand-Logs -Path $Global:AzSKPath -AnalysisType 'SVT'
         
         # Generate testcases for the test run
         $TestCases = @(ConvertTo-SVTTestCases @(Get-SVTResultList -Path $ExpandedAzskLogs))
