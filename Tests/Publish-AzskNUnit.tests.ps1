@@ -1,26 +1,31 @@
 Describe 'Publish-AzskNUnit tests' {
     BeforeAll {
         . $PSScriptRoot/../cmdlets/interface/Publish-AzskNUnit.ps1
+        . $PSScriptRoot/../cmdlets/internal/ConvertTo-NUnit.ps1
+        . $PSScriptRoot/../cmdlets/internal/Get-ModulePath.ps1
         . $PSScriptRoot/../cmdlets/internal/Expand-Logs.ps1
         . $PSScriptRoot/../cmdlets/internal/Get-ARMCheckerResultList.ps1
         . $PSScriptRoot/../cmdlets/internal/ConvertTo-NUnit.ps1
         . $PSScriptRoot/../cmdlets/internal/ConvertTo-TestCases.ps1
+
+
     }
     
     Context 'Interface Tests' {
-        It 'Path parameter cannot -be null' {
+        It 'Path parameter cannot be null' {
             { Publish-AzskNUnit -Path $null } | should -throw
         }
 
-        It 'Path parameter cannot -be empty' {
+        It 'Path parameter cannot be empty' {
             { Publish-AzskNUnit -Path @() } | should -throw
         }
 
-        It 'Path parameter must -be a valid path' {
+        It 'Path parameter must be a valid path' {
             { Publish-AzskNUnit -Path 'TestDrive:/invalid_path' } | should -throw
         }
 
-        It 'Fails if logs canot -be expanded' {
+        It 'Fails if logs cannot be expanded' {
+            Set-ItResult -Inconclusive -Because 'Invocation of Invoke-Pester from a Pester test run does not propograte mocks'
 
             New-Item -ItemType File -Path 'TestDrive:/Archive'
             Mock Expand-Logs {} -Verifiable
@@ -38,6 +43,8 @@ Describe 'Publish-AzskNUnit tests' {
 
         It 'Fails if testcases are empty' {
 
+            Set-ItResult -Inconclusive -Because 'Invocation of Invoke-Pester from a Pester test run does not propograte mocks'
+
             Mock Expand-Logs { return 'TestDrive:/' } -Verifiable
             Mock Write-Error {} -Verifiable 
             Mock Get-ARMCheckerResultList { return @() } -Verifiable
@@ -52,6 +59,9 @@ Describe 'Publish-AzskNUnit tests' {
         }    
 
         It 'Passes testcases to Pester' {
+            
+            Set-ItResult -Inconclusive -Because 'Invocation of Invoke-Pester from a Pester test run does not propograte mocks'
+  
             $ArmResults = @(@{FeatureName = 'ValidFeatureName1'; Description = 'ValidDescription1'; ResourceLineNumber = 'ValidLineNumber1'; FilePath = 'ValidFilePath1'; Status = 'ValidStatus1' },
                 @{FeatureName = 'ValidFeatureName2'; Description = 'ValidDescription2'; ResourceLineNumber = 'ValidLineNumber2'; FilePath = 'ValidFilePath2'; Status = 'ValidStatus2' })
 
@@ -72,6 +82,8 @@ Describe 'Publish-AzskNUnit tests' {
         }    
 
         It 'Generates Errors if Enable Exit enabled' {
+            Set-ItResult -Inconclusive -Because 'Invocation of Invoke-Pester from a Pester test run does not propograte mocks'
+            
             $ArmResults = @(@{})
 
             Mock Expand-Logs { return 'TestDrive:/' } -Verifiable
@@ -93,6 +105,8 @@ Describe 'Publish-AzskNUnit tests' {
         }    
 
         It 'Generated Warning if Enable Exit not enabled' {
+            Set-ItResult -Inconclusive -Because 'Invocation of Invoke-Pester from a Pester test run does not propograte mocks'
+
             $ArmResults = @(@{})
 
             Mock Expand-Logs { return 'TestDrive:/' } -Verifiable

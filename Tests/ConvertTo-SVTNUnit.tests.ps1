@@ -3,7 +3,6 @@ Describe 'ConvertTo-SVTNUnit tests' {
     BeforeAll {
         . $PSScriptRoot/../cmdlets/internal/ConvertTo-SVTNUnit.ps1
         . $PSScriptRoot/../cmdlets/internal/Get-ModulePath.ps1
-        . $PSScriptRoot/../cmdlets/internal/Use-Pester.ps1
     }
 
 
@@ -29,20 +28,12 @@ Describe 'ConvertTo-SVTNUnit tests' {
             { ConvertTo-SVTNUnit -OutputPath 'invalid_path' } | should -throw
         }
 
-        It 'TestCases array cannot -be null' {
-            { ConvertTo-SVTNUnit -OutputPath 'TestDrive:' -TestCases $null } | should -throw
-        }
-
-        It 'TestCases array cannot -be an empty' {
-            { ConvertTo-SVTNUnit-NUnit -OutputPath 'TestDrive:' -TestCases @() } | should -throw
-        }
-
         It 'OutputVariable parameter cannot -be null' {
-            { ConvertTo-SVTNUnit-NUnit -OutputPath 'TestDrive:' -TestCases @('valid') -OutputVariable $null } | should -throw
+            { ConvertTo-SVTNUnit-NUnit -OutputPath 'TestDrive:' -OutputVariable $null } | should -throw
         }
 
         It 'OutputVariable parameter cannot -be empty' {
-            { ConvertTo-SVTNUnit -OutputPath 'TestDrive:' -TestCases @('valid') -OutputVariable ([string]::empty) } | should -throw
+            { ConvertTo-SVTNUnit -OutputPath 'TestDrive:'  -OutputVariable ([string]::empty) } | should -throw
         }
     }
 
@@ -54,7 +45,7 @@ Describe 'ConvertTo-SVTNUnit tests' {
             Mock Get-ModulePath { return 'TestDrive:/svt' } -Verifiable
             Mock Invoke-Pester {} -Verifiable
 
-            { ConvertTo-SVTNUnit -OutputPath 'TestDrive:/' -TestCases @('testcase') -OutputVariable 'valid' } | should -not -throw
+            { ConvertTo-SVTNUnit -OutputPath 'TestDrive:/' -OutputVariable 'valid' } | should -not -throw
 
             Should -Invoke Join-Path -Exactly 1 -Scope It
             Should -Invoke Write-Host -Exactly 1 -Scope It

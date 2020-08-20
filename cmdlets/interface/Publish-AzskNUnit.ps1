@@ -15,7 +15,7 @@ function Publish-AzskNUnit {
     )
     try {
         # Invoke pester to validate convert from AZSK to NUnit
-        $summary = ConvertTo-Nunit -OutputPath $Path -OutputVariable $OutputVariable
+        $summary = ConvertTo-NUnit -OutputPath $Path -OutputVariable $OutputVariable
 
         if ($summary.FailedCount -gt 0) {
             if ($EnableExit) {
