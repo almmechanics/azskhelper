@@ -1,11 +1,14 @@
 Set-StrictMode -Version Latest
 
+Write-Verbose 'Importing Pester 5.x'
+
+Import-Module 'pester' -MinimumVersion '5.0.0' -Verbose
+
 $cmdletsPath = Join-Path $PSScriptRoot 'cmdlets'
 
 $interfacePath = Join-Path $cmdletsPath 'interface'
 . (Join-Path $interfacePath 'Publish-AzskNUnit.ps1')
 . (Join-Path $interfacePath 'Publish-AzskSVTNUnit.ps1')
-
 
 $internalPath = Join-Path $cmdletsPath 'internal'
 . (Join-Path $internalPath 'ConvertTo-NUnit.ps1')
@@ -17,6 +20,7 @@ $internalPath = Join-Path $cmdletsPath 'internal'
 . (Join-Path $internalPath 'Get-SVTResultList.ps1')
 . (Join-Path $internalPath 'Get-SkippedFilesList.ps1')
 . (Join-Path $internalPath 'Get-ModulePath.ps1')
+. (Join-Path $internalPath 'Search-AzskLogs.ps1')
 . (Join-Path $internalPath 'Search-AzskLogs.ps1')
 
 Write-Verbose 'azskhelper module loaded'

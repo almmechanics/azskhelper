@@ -1,9 +1,8 @@
 Set-StrictMode -Version latest
-function ConvertTo-SVTTestCases
-{
+function ConvertTo-SVTTestCases {
     [CmdletBinding()] 
     param(
-        [parameter(ValueFromPipelineByPropertyName,ValueFromPipeline)]
+        [parameter(ValueFromPipelineByPropertyName, ValueFromPipeline)]
         [Array]
         [ValidateNotNullOrEmpty()]
         $SVTResults
@@ -14,8 +13,7 @@ function ConvertTo-SVTTestCases
     $SVTResults | ForEach-Object {
         # Allow optional ResourceGroupName parameter
         Write-Verbose $_
-        if ($_ | Get-Member -Name 'ResourceGroupName')
-        {
+        if ($_ | Get-Member -Name 'ResourceGroupName') {
             $ResourceGroupName = ($_.ResourceGroupName)
         }
         else {
@@ -24,11 +22,11 @@ function ConvertTo-SVTTestCases
 
         $TestCases += @(
             @{
-                FeatureName = $_.FeatureName
+                FeatureName       = $_.FeatureName
                 ResourceGroupName = $ResourceGroupName
-                Description = $_.Description
-                Status = $_.Status
-                ControlSeverity = $_.ControlSeverity
+                Description       = $_.Description
+                Status            = $_.Status
+                ControlSeverity   = $_.ControlSeverity
             }
         )
     }

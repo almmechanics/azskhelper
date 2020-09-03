@@ -1,19 +1,17 @@
 Set-StrictMode -Version latest
 
-function Get-ModulePath
-{
+function Get-ModulePath {
     param(
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]
         [ValidateNotNullOrEmpty()]
         $Filename,
         [string]
         [ValidateNotNullOrEmpty()]
-        $Folder ='.'
+        $Folder = '.'
     )
 
     $moduleBase = (Get-Module 'AzskHelper').ModuleBase
 
     return (Join-Path $moduleBase (Join-Path $Folder $Filename))
 }
-
